@@ -30,9 +30,7 @@ height:100vh;
 background-color:var(--color-body);
 }
 /* aside */
-aside {
 
-}
 aside .top {
     /* background-color: #ff76f7; */
     display:flex;
@@ -112,9 +110,7 @@ main {
     background-color:var(--color-white);
 } 
 /* .right */
-.right{
-    /* background-color: #ddd; */
-}
+
 .right .top{
     display:flex;
     justify-content:flex-end;
@@ -249,9 +245,7 @@ main {
 .right .top .profile .info{
     display:none;
 }
-.right .top .profile{
-    /* gap:0; */
-}
+
 .right .top .menu{
     display:block;
     position:absolute;
