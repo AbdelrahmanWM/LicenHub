@@ -262,15 +262,16 @@ main {
 }
 
 
-/* index.html container */
+/*              index.html              */
+/* container */
 div.container.index{
     display:block;
 }
 /*****************************************/
 
-/* Provider dashboard */
+/*            Provider dashboard                    */
 
-/* customers */
+/* provider_customers */
 
 main.p_customers .info{
     display:grid;
@@ -306,11 +307,22 @@ main.p_customers .info .details{
 main.p_customers .customersInfo .filters {
     display:flex;
     justify-content: space-between;
-    background-color: var(--color-white);
-    padding:1rem;
+    /* background-color: var(--color-white); */
+    /* padding:1rem; */
     border-radius: var(--border-raduis-1);
-    margin-bottom:2rem;
+    margin-bottom:1rem;
    
+}
+main.p_customers .customersInfo .filters input[type="text"]{
+    /* border:1px solid var(--color-border); */
+    padding:0.5rem;
+    border-radius: var(--border-raduis-1);
+}
+main.p_customers .customersInfo .filters button {
+    background-color: var(--color-white);
+    padding:0.5rem;
+    border-radius: var(--border-raduis-1);
+    color:var(--color-dark);
 }
 main.p_customers .customersInfo table {
     width:100%;
@@ -320,12 +332,18 @@ main.p_customers .customersInfo table {
     padding:1rem;
  
 }
-main.p_customers .customersInfo table tbody tr{
+main.p_customers .customersInfo table tbody tr:not(:first-child){
    border-top:1px solid var(--color-border);
 }
 main.p_customers .customersInfo table td,
 main.p_customers .customersInfo table th{
     padding:1.5rem 1rem;
+
+}
+main.p_customers .customersInfo table td{
+   
+    color:var(--color-link);
+    text-align: center;
 }
 /*******************/
 /************************************************/
