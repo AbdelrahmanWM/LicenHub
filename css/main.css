@@ -6,6 +6,8 @@
     --color-warning:#ffbb55;
     --color-body:#f6f6f9;
     --color-link:#7d8da1;
+    --color-border:#e7e0e0df;
+    --color-shadow:#6f7cf463;
     --color-gray-bg:rgba(132,139,200,0.18);
 
 
@@ -14,6 +16,8 @@
     --color-dark:#363949;
     --transition-duration:300ms;
     --border-raduis-1:0.6rem;
+    --border-raduis-2:1.2rem;
+    --box-shadowing: 0 1.5rem 2rem var(--color-shadow);
 }
 html {
     font-size:14px;
@@ -107,7 +111,7 @@ aside .side a.active span{
 main {
     /* text-align: center; */
     padding:20px;
-    background-color:var(--color-white);
+    /* background-color:var(--color-white); */
 } 
 /* .right */
 
@@ -256,3 +260,72 @@ main {
 }
 
 }
+
+
+/* index.html container */
+div.container.index{
+    display:block;
+}
+/*****************************************/
+
+/* Provider dashboard */
+
+/* customers */
+
+main.p_customers .info{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-gap:2rem;
+    margin-bottom: 5rem;
+    margin-top:1.5rem;
+}
+main.p_customers .info > div{
+    padding:2rem;
+    box-sizing:content-box;
+    background-color:var(--color-white);
+    border-radius: var(--border-raduis-2);
+    transition:all 300ms ease;
+    border:2px solid transparent;
+}
+main.p_customers .info > div:hover {
+   
+   border:2px solid var(--color-shadow);
+
+}
+
+main.p_customers .info .description{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    margin-bottom:4rem;
+}
+main.p_customers .info .details{
+    display:flex;
+    justify-content: space-between;
+}
+main.p_customers .customersInfo .filters {
+    display:flex;
+    justify-content: space-between;
+    background-color: var(--color-white);
+    padding:1rem;
+    border-radius: var(--border-raduis-1);
+    margin-bottom:2rem;
+   
+}
+main.p_customers .customersInfo table {
+    width:100%;
+    border-collapse:collapse;
+    background-color: var(--color-white);
+    border-radius: var(--border-raduis-2);
+    padding:1rem;
+ 
+}
+main.p_customers .customersInfo table tbody tr{
+   border-top:1px solid var(--color-border);
+}
+main.p_customers .customersInfo table td,
+main.p_customers .customersInfo table th{
+    padding:1.5rem 1rem;
+}
+/*******************/
+/************************************************/
