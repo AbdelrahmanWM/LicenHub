@@ -316,6 +316,7 @@ main.p_customers .customersInfo .filters {
 main.p_customers .customersInfo .filters input[type="text"]{
     /* border:1px solid var(--color-border); */
     padding:0.5rem;
+    background-color: var(--color-white);
     border-radius: var(--border-raduis-1);
 }
 main.p_customers .customersInfo .filters button {
