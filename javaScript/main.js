@@ -76,25 +76,22 @@ close.onclick = function(){
     aside.classList.remove("visible");
 }
 //--------------------------------------------------------------
+/**
+ * For the Login&Registration form
+ */
 document.getElementById("login-form").addEventListener("submit", function (event) {
     event.preventDefault(); // Prevent the default form submission
-
-    console.log("Form submitted"); // Log to check if the form submission event is triggering
-
-
     const userType = document.querySelector('input[name="user-type"]:checked');
     const email = document.getElementById("email-input").value;
     const password = document.getElementById("password-input").value;
 
     if (userType && email && password) {
         if (userType.value === "client") {
-            window.location.href = "C:\Users\Keysh\OneDrive\Desktop\LicenHub-main\Client-dashboard\client_dashboard.html"; // Redirect to the client page
-        } 
-        else if (userType.value === "provider") {
-            window.location.href = "C:\Users\Keysh\OneDrive\Desktop\LicenHub-main\Provider-dashboard\provider_dashboard.html"; // Redirect to the provider page
+            window.location.href = "Client-dashboard\\client_dashboard.html"; // Redirect to the client page
+        } else if (userType.value === "provider") {
+            window.location.href = "Provider-dashboard/provider_dashboard.html"; // Redirect to the provider page
         }
-    } 
-    else {
+    } else {
         alert("Please fill in all the required fields and select user type.");
     }
 });
