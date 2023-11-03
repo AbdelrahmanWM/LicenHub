@@ -71,15 +71,16 @@
 
     if (userType && email && password) {
         if (userType.value === "client") {
-            window.location.href = "Client-dashboard\\client_dashboard.html"; // Redirect to the client page
+            window.location.href = "/Client-dashboard/client_dashboard.html"; // Redirect to the client page
         } else if (userType.value === "provider") {
-            window.location.href = "Provider-dashboard/provider_dashboard.html"; // Redirect to the provider page
+            window.location.href = "/Provider-dashboard/provider_dashboard.html"; // Redirect to the provider page
         }
-    } else {
+    } 
+    else {
         alert("Please fill in all the required fields and select user type.");
     }
 });
-    </script>
+</script>
 
 </body>
 
