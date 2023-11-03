@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LicenHub registration</title>
+    <link rel="stylesheet" href="../css/framework.css">
+    <link rel="stylesheet" href="../css/main.css">
+
+    <!-- Poppins font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="import" href="templates/asideTemplate.html">
+    <script src="javaScript/template.js"></script> -->
+
+    <!-- Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body class="body-register">
+    <div class="register-area">
+        <form class="register-form" action="">
+            <h1>Sign Up</h1>
+            <div class="register-client-provider">
+                <p>What type of account would you like to create?</p>
+                <label class="register-client">
+                    <input type="radio" name="register-choice" value="client" checked>
+                    Client 
+                </label>
+                 <span>or</span>
+                <label class="register-provider">
+                    <input type="radio" name="register-choice" value="provider">
+                    Provider 
+                </label>
+            </div>
+            <div class="user-register-info">
+                <div class="user-fname">
+                    <input type="text" name="fname" placeholder="Fist name" required>
+                </div>
+                <div class="user-lname">
+                    <input type="text" name="lname" placeholder="Last name" required>
+                </div>
+                <div class="user-email">
+                    <input type="email" name="user-email" placeholder="Email" required>
+                </div>
+                <div class="create-password">
+                    <input type="password" name="create-password" placeholder="Create password" required>
+                </div>
+                <div class="confirm-password">
+                    <input type="password" name="confirm-password" placeholder="Confirm password" required>
+                </div>
+            </div>
+            <div>
+                <button class="signup-button" type="submit">Sign-up</button>
+            </div>
+            <div class="link-signin">
+                <p>Have an account already? <a href="Login&Register.html">Sign in here</a></p>
+            </div>
+        </form>
+    </div>
+    
+    <!--Script -->
+    <script>
+        document.querySelector(".signup-button").onclick = function(event) {
+
+            var password = document.querySelector('input[name="create-password"]').value;
+            var confirmPassword = document.querySelector('input[name="confirm-password"]').value;
+            if (password !== confirmPassword) {
+                event.preventDefault(); //Prevent form submission if passwords do not match
+                alert("Passwords do not match!");
+            }
+        }
+    </script>
+</body>
+</html>
