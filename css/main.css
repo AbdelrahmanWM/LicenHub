@@ -543,3 +543,98 @@ main.p_customers .customersInfo table td{
 .link-register a:hover{
     text-decoration: underline;
 }
+
+/*----------------------------------------------------*/
+/* Registration.html */
+.body-register{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background-color: var(--color-white);
+    position: absolute;
+    border: 4px solid var(--color-primary);
+    border-radius: 15px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.register-area{
+    width: 420px;
+    background-color:rgba(21, 33, 133, 0.18);
+    border-radius: 10px;
+    padding: 30px 40px;
+}
+
+.register-area h1{
+    text-align: center;
+    font-size: 36px;
+    color: var(--color-primary);
+}
+
+.user-register-info{
+    height: 360px;
+    position: relative;
+}
+
+.user-register-info input{
+    height: 100%;
+    width: 100%;
+    border: 2px solid var(--color-dark);    
+    border-radius: 40px;
+    background: transparent;
+    outline: none;
+    font-size: 16px;
+    color: var(--color-primary);
+    padding: 15px 20px 15px 20px;
+    margin-top: 15px;
+}
+
+.user-register-info input::placeholder{
+    color: var(--color-dark)
+}
+
+.register-client-provider{
+    font-size: 14.5x;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.register-client-provider span{
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.register-client-provider input[type = 'radio']{
+    accent-color: var(--color-primary);
+
+}
+
+.signup-button{
+    width: 100%;
+    height: 45px ;
+    background-color: var(--color-primary);
+    border: none;
+    outline: none;
+    color: var(--color-white);
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    font-weight: bolder;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.link-signin{
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+
+.link-signin a{
+    color: var(--color-primary);
+    font-weight: bolder;
+}
+
+.link-signin a:hover{
+    text-decoration: underline;
+}
