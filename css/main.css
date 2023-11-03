@@ -10,6 +10,9 @@
     --color-shadow:#6f7cf463;
     --color-gray-bg:rgba(132,139,200,0.18);
 
+    --border-hovering:2px solid var(--color-shadow);
+    --border-transparent:2px solid transparent;
+
 
     --color-white:white;
     --color-black:black;
@@ -30,7 +33,7 @@ grid-template-columns:14rem auto 23rem;
 gap:1.8rem;
 width:96%;
 margin:1.5rem auto;
-height:100vh;
+height:100%;
 background-color:var(--color-body);
 }
 /* aside */
@@ -70,6 +73,7 @@ aside .top .close {
 aside .side {
 height:100vh;
 margin-top:2rem;
+position:relative;
 }
 aside .side a{
     width:100%;
@@ -97,8 +101,8 @@ aside .side a.active::before {
 
 }
 aside .side a:last-child{
-    position:absolute;
-    bottom:1rem;
+    position:fixed;
+    bottom:2rem;
 }
 aside .side a span {
     margin-left:2rem;
@@ -111,8 +115,16 @@ aside .side a.active span{
 main {
     /* text-align: center; */
     padding:20px;
+    padding-bottom: 0;
+    height:fit-content;
     /* background-color:var(--color-white); */
 } 
+main h1{
+    width:fit-content;
+}
+main h1:hover {
+    color:var(--color-primary);
+}
 /* .right */
 
 .right .top{
@@ -270,7 +282,66 @@ div.container.index{
 /*****************************************/
 
 /*            Provider dashboard                    */
+/* provider_account   */
+main.p_account .information {
+    /* background-color: var(--color-white); */
+    display:grid;
+    width:100%;
+    grid-template-columns: auto-fill;
+    grid-gap:10px;
+    margin-top:2rem;
+   
+}
 
+main.p_account .information .info{
+    display:flex;
+    justify-content: space-between;
+    background-color: var(--color-white);
+    padding:0.8rem;
+    border-radius:var(--border-raduis-1);
+    border:var(--border-transparent);
+    
+}
+main.p_account .info:hover {
+    border:var(--border-hovering);
+}
+main.p_account .info input,main.p_account .info select {
+    padding:0.4rem;
+    color:var(--color-dark);
+    background-color:var(--color-body);
+    border-radius: var(--border-raduis-1);
+    width:75%;
+    border:var(--border-transparent);
+}
+
+main.p_account .info input:focus{
+   border:var(--border-hovering);
+}
+
+main.p_account .info input:focus main.p_account .info{
+    border:var(--border-transparent);
+}
+main.p_account .info:last-child{
+    width:fit-content;
+}
+main.p_account .info:last-child input {
+    width:fit-content;
+    background-color: transparent;
+    font-weight: 700;
+    /* color:var(--color-primary) */
+}
+/* @media screen and (max-width: 1200px){
+    main.p_account .information {
+        width:100%;
+    }
+    }
+    
+    @media screen and (max-width:768px){
+
+    }
+     */
+
+/************************/
 /* provider_customers */
 
 main.p_customers .info{
@@ -286,11 +357,11 @@ main.p_customers .info > div{
     background-color:var(--color-white);
     border-radius: var(--border-raduis-2);
     transition:all 300ms ease;
-    border:2px solid transparent;
+    border:var(--border-transparent);
 }
 main.p_customers .info > div:hover {
    
-   border:2px solid var(--color-shadow);
+   border:var(--border-hovering);
 
 }
 
@@ -348,6 +419,10 @@ main.p_customers .customersInfo table td{
 }
 /*******************/
 /************************************************/
+
+/*             Client Dashboard                           */
+
+/* Login&Ragister.html */
 
 .body-login{
     display: flex;
