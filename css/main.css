@@ -24,6 +24,7 @@
 }
 html {
     font-size:14px;
+    height:100%;
 }
 
 /* .container */
@@ -73,7 +74,7 @@ aside .top .close {
 aside .side {
 height:100vh;
 margin-top:2rem;
-position:relative;
+/* position:relative; */
 }
 aside .side a{
     width:100%;
@@ -237,6 +238,10 @@ aside .top .close{
 }
 aside .side a{
     width:100%;
+}
+aside .side a:last-child{
+    position:absolute;
+    bottom:1.5rem;
 }
 aside .side a p{
     display:block;
