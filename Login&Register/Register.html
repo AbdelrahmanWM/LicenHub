@@ -49,10 +49,10 @@
                     <input type="email" name="user-email" placeholder="Email" required>
                 </div>
                 <div class="create-password">
-                    <input type="password" name="create-passoword" placeholder="Create password" required>
+                    <input type="password" name="create-password" placeholder="Create password" required>
                 </div>
                 <div class="confirm-password">
-                    <input type="password" name="confirm-passoword" placeholder="Confirm password" required>
+                    <input type="password" name="confirm-password" placeholder="Confirm password" required>
                 </div>
             </div>
             <div>
@@ -63,5 +63,18 @@
             </div>
         </form>
     </div>
+    
+    <!--Script -->
+    <script>
+        document.querySelector(".signup-button").onclick = function(event) {
+
+            var password = document.querySelector('input[name="create-password"]').value;
+            var confirmPassword = document.querySelector('input[name="confirm-password"]').value;
+            if (password !== confirmPassword) {
+                event.preventDefault(); //Prevent form submision if passwords do not match
+                alert("Passowrds do not match!");
+            }
+        }
+    </script>
 </body>
 </html>
