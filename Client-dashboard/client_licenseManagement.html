@@ -28,12 +28,73 @@
     
 </head>
 <body>
-    <div class="container">
+     <div class="container">
         <aside >
             <!--  aside template generated here -->
         </aside>
         <main>
         <h1>License Management</h1>
+        <div class="search-sort">
+          <input class="license-search" type="text" placeholder="Search">
+          <select name="user-sort-option">
+            <option value="sort-by">Sort-by</option>
+            <option value="date-recent">Most Recent date</option>
+            <option value="date-recent">Oldest date</option>
+            <option value="license-name">License name</option>
+          </select>
+          <button class="save-changes-button">Save changes</button>
+        </div>
+         <table class="client-serialnum">
+          <tr>
+            <th>Name</th>
+            <th>Product serial number</th>
+            <th>Software name</th>
+            <th>Purchase date</th>
+            <th>Expiry date</th>
+          </tr>
+          <tr>
+            <td><input type="text" placeholder="Enter Name"></td>
+            <td><input type="text" placeholder="Enter product serial number"></td>
+            <td><input type="text" placeholder="Enter software name"></td>
+            <td><input type="text" placeholder="Enter purchase date"></td>
+            <td><input type="text" placeholder="Enter Expiry date"></td>
+          </tr>
+          <tr>
+            <td>Daniel Hevrin</td>
+            <td>SN76447</td>
+            <td>Abc License</td>
+            <td>2023-2-27</td>
+            <td>2024-2-27</td>
+          </tr>
+          <tr>
+            <td>Daniel Hevrin</td>
+            <td>SN66567</td>
+            <td>123 License</td>
+            <td>2023-10-11</td>
+            <td>2023-11-11</td>
+          </tr>
+          <tr>
+            <td>Daniel Hevrin</td>
+            <td>SN45321</td>
+            <td>456 License</td>
+            <td>2023-4-2</td>
+            <td>2023-10-2</td>
+          </tr>
+          <tr>
+            <td>Daniel Hevrin</td>
+            <td>SN76543</td>
+            <td>Abc License</td>
+            <td>2023-1-24</td>
+            <td>2024-1-24</td>
+          </tr>
+          <tr>
+            <td>Daniel Hevrin</td>
+            <td>SN76543</td>
+            <td>Hello License</td>
+            <td>2023-6-24</td>
+            <td>2023-7-24</td>
+          </tr>
+         </table>
         </main>
         <div class="right">
 
