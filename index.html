@@ -1,47 +1,702 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- Css files -->
-    <link rel="stylesheet" href="css/framework.css">
-    <link rel="stylesheet" href="css/main.css">
-   
-    <!-- Google material icons sharp -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="img/licensehub.png" />
+    <!-- GOOGLE FONTS CDN LINK -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-    href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
-    rel="stylesheet"
-  />
-    <!-- Poppins font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&family=Teko:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-</head>
-<body>
-    <div class="container index">
-      <h1>Home</h1>
-      <a href="Provider-dashboard/provider_dashboard.html">Provider dashboard</a>
-      <a href="Client-dashboard/client_dashboard.html">Client dashboard</a>
-        <h1>Manage your software licenses and keep track of all your data securly</h1>
-        <p>LicenHub is a comprehensive licensing management system that generates and securely stores unique serial numbers for clients and providers. It offers real-time validation, ensuring the authenticity and compliance of these licenses, making it a valuable tool for both software providers and end users to simplify their licensing processes and enhance security.
-</p>
+    <!-- CSS LINK -->
+    <link rel="stylesheet" href="HomepageCss/bootstrap.css" />
+    <link rel="stylesheet" href="HomepageCss/custom.css" />
+    <title>LicenHub</title>
+  </head>
+  <body>
+    <!-- ======================================== NAVIGRATION ======================================== -->
+    <nav id="navigration" class="navbar fixed-top p-0">
+      <div class="container">
+        <!-- <a class="logo" href="#"><img src="img/logo.png" alt=""></a> -->
+        <a class="logo" href="#">LicenHub</a>
+        <div class="sidenav">
+          <div class="header">
+            <a class="logo d-lg-none" href="#">LicenHub</a>
+            <a href="#" class="d-lg-none" id="showsidenav"
+              ><img src="img/icon/letter-x.png" alt="" />
+            </a>
+          </div>
+          <ul class="mb-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="Login&Register/Login&Register.html"><span>Login</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="Login&Register/Register.html"><span>Register</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact Us</a>
+            </li>
+          </ul>
+        </div>
+        <button class="btn font-btn get-quote d-none d-md-block">
+          <i class="fal fa-chevron-right"></i> <span>Get A Quote</span>
+        </button>
+        <div id="hamburger" class="d-lg-none">
+          <img src="img/icon/menu.png" class="img01" alt="" />
+        </div>
+      </div>
+    </nav>
 
-        <h2>Features</h2>
-        <ul>
-            <li>Serial Number Generation and Safely Storing</li>
-            <li>Real-time Validation</li>
-            <li>Empowering Both Providers and Clients</li>
-            <li>User-Friendly Interface</li>
-        </ul>
+    <!-- ======================================== HOME SECTION ======================================== -->
+    <section id="homeSection">
+      <div class="owl-carousel">
+        <div class="slider-box slider-box1">
+          <div class="overlay">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <div class="txt-box">
+                    <div class="txt-area">
+                      <p>WELCOME TO OUR GLOBAL LICENSE HUB</p>
+                      <h1>STREAMLINE SOFTWARE LICENSE MANAGEMENT</h1>
+                      <a href="#" class="btn layer-btn">DISCOVER MORE</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slider-box slider-box2">
+          <div class="overlay">
+            <div class="container">
+              <div class="row">
+                <div class="col">
+                  <div
+                    class="txt-box"
+                    data-aos="fade-up"
+                    data-aos-anchor-placement="center-bottom"
+                  >
+                    <div class="txt-area">
+                      <p>WE ASSURE PROTECTION</p>
+                      <h1>EFFICIENTLY MANAGE YOUR SOFTWARE LICENSES</h1>
+                      <a href="#" class="btn layer-btn">DISCOVER MORE</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        
-    </div>
-    <script src="javaScript/template.js"></script>
-    <script src="javaScript/main.js"></script>
+    <!-- ======================================== FEATURE SECTION ======================================== -->
+    <section id="featureSection">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="img-box">
+              <img
+                src="img/featured-image-1.jpg"
+                class="img01 wow slideInLeft"
+                data-wow-duration="1.5s"
+                alt=""
+              />
+              <img
+                src="img/featured-image-2.jpg"
+                class="img02 wow slideInLeft"
+                data-wow-duration="2s"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="txt-box">
+              <div class="sec-header">
+                <h2>
+                  Your LICENSES, Our EXPERTISE, Your SUCCESS.<span>.</span>
+                </h2>
+                <h4>
+                  WE ARE COMMITTED TO PROVIDING OUR CUSTOMERS WITH EXCEPTIONAL
+                  SERVICE EMPOWERING THROUGH LICENSE MANAGEMENT EXCELLENCE.
+                </h4>
+                <p>
+                  LicenHub is a comprehensive licensing management system that
+                  generates and securely stores unique serial numbers for
+                  clients and providers. It offers real-time validation,
+                  ensuring the authenticity and compliance of these licenses,
+                  making it a valuable tool for both software providers and end
+                  users to simplify their licensing processes and enhance
+                  security.
+                </p>
+              </div>
+              <div class="part2">
+                <ul>
+                  <li><i class="fal fa-check"></i> Real-time Validation</li>
+                  <li>
+                    <i class="fal fa-check"></i> Serial Number Generation and
+                    Safely Storing
+                  </li>
+                  <li>
+                    <i class="fal fa-check"></i> Empowering Both Providers and
+                    Clients
+                  </li>
+                  <li><i class="fal fa-check"></i> User-Friendly Interface</li>
+                </ul>
+                <div class="since">
+                  <span>SINCE <br />2019</span>
+                </div>
+              </div>
+              <a href="#" class="btn layer-btn">DISCOVER MORE</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-</body>
+    <!-- ======================================== SERVICE SECTION ======================================== -->
+    <section id="serviceSection">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="sec-header">
+              <h2>WE SHAPE THE PERFECT SOLUTIONS<span>.</span></h2>
+              <p>
+                We are committed to providing our customers with exceptional
+                service while offering our employees the best training.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="service-box wow slideInRight" data-wow-duration="1.5s">
+              <div class="txt-area">
+                <h3>01</h3>
+                <h4>LICENSE <br />MANAGEMENT</h4>
+              </div>
+              <div class="img-box">
+                <img
+                  src="img/icon/licensemanagement02.png"
+                  alt=""
+                  class="img01"
+                />
+                <img
+                  src="img/icon/licensemanagement.png"
+                  alt=""
+                  class="img02"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="service-box wow slideInRight" data-wow-duration="1.5s">
+              <div class="txt-area">
+                <h3>02</h3>
+                <h4>ACCOUNT <br />MANAGEMENT</h4>
+              </div>
+              <div class="img-box">
+                <img
+                  src="img/icon/accountmanagement02.png"
+                  alt=""
+                  class="img01"
+                />
+                <img
+                  src="img/icon/accountmanagement.png"
+                  alt=""
+                  class="img02"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="service-box wow slideInRight" data-wow-duration="1.5s">
+              <div class="txt-area">
+                <h3>03</h3>
+                <h4>ALERTS & <br />NOTIFCATIONS</h4>
+              </div>
+              <div class="img-box">
+                <img src="img/icon/alerts02.png" alt="" class="img01" />
+                <img src="img/icon/alerts.png" alt="" class="img02" />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="service-box wow slideInRight" data-wow-duration="1.5s">
+              <div class="txt-area">
+                <h3>04</h3>
+                <h4>SECURITY & <br />ACCESS CONTROL</h4>
+              </div>
+              <div class="img-box">
+                <img src="img/icon/security02.png" alt="" class="img01" />
+                <img src="img/icon/security.png" alt="" class="img02" />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="service-box wow slideInRight" data-wow-duration="1.5s">
+              <div class="txt-area">
+                <h3>05</h3>
+                <h4>LICENSE <br />RECOVERY</h4>
+              </div>
+              <div class="img-box">
+                <img src="img/icon/recovery02.png" alt="" class="img01" />
+                <img src="img/icon/recovery.png" alt="" class="img02" />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="service-box wow slideInRight" data-wow-duration="1.5s">
+              <div class="txt-area">
+                <h3>06</h3>
+                <h4>MOBILE <br />ACCESS</h4>
+              </div>
+              <div class="img-box">
+                <img src="img/icon/mobile02.png" alt="" class="img01" />
+                <img src="img/icon/mobile.png" alt="" class="img02" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+ 
+    <!-- ======================================== PRICING SECTION ======================================== -->
+    <section id="pricingSection">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="sec-header text-center">
+              <h2>CHOOSE YOUR PLAN<span>.</span></h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="pricing-box wow bounceInLeft" data-wow-duration="2s">
+              <h4>Basic Plan</h4>
+              <h3>$49</h3>
+              <ul>
+                <li>Essential License Management</li>
+                <li>Startups / Individuals</li>
+                <li>Affordable Pricing</li>
+                <li>Limited Support</li>
+              </ul>
+              <a href="#" class="btn font-btn"
+                ><i class="fal fa-chevron-right" aria-hidden="true"></i>
+                <span>Discover More</span></a
+              >
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="pricing-box wow bounceInLeft" data-wow-duration="2s">
+              <h4>Premium Plan</h4>
+              <h3>$149</h3>
+              <ul>
+                <li>Advanced License Management</li>
+                <li>Medium / Large Businesses</li>
+                <li>Priority Email & Chat Support.</li>
+                <li>Additional Integrations</li>
+                <li>Customization Options</li>
+                <li>Competitive Pricing</li>
+              </ul>
+              <a href="#" class="btn font-btn"
+                ><i class="fal fa-chevron-right" aria-hidden="true"></i>
+                <span>Discover More</span></a
+              >
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="pricing-box wow bounceInLeft" data-wow-duration="2s">
+              <h4>Enterprise Plan</h4>
+              <h3>$299</h3>
+              <ul>
+                <li>Comprehensive License Management</li>
+                <li>Large Enterprises With Complex Needs</li>
+                <li>24/7 Dedicated Support</li>
+                <li>Scalability</li>
+                <li>Enhanced Security and Compliance</li>
+                <li>Integration and Single Sign-On (SSO)</li>
+                <li>Custom Pricing</li>
+              </ul>
+              <a href="#" class="btn font-btn"
+                ><i class="fal fa-chevron-right" aria-hidden="true"></i>
+                <span>Discover More</span></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="specialFeature">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="sec-header">
+              <h2>
+                WELCOME TO LICENSEHUB: YOUR LICENSE MANAGEMENT SOLUTION<span
+                  >.</span
+                >
+              </h2>
+
+              <div class="text-dark">
+              <p>
+                <blockquote><i>Unlock the Power of Effortless License Management</i></blockquote>Are you tired
+                of the complexities and uncertainties that often accompany
+                software and service licensing? Look no further. LicenHub is
+                here to revolutionize the way you manage licenses.
+              </p>
+            </div>
+
+            <br />
+
+            <div class="txt-area">
+                <h3>What is LicenHub?</h3>
+                <p>LicenHub is not just a software license management system; it's your partner in achieving licensing excellence. 
+                  It simplifies the entire licensing journey, from generation to validation and enforcement. Here's why LicenHub is 
+                  the solution you've been waiting for:
+                </p>
+
+                <br />
+
+                <h3>Simplify License Management:</h3>
+                <p>Managing licenses can be a daunting task. LicenHub streamlines the process, making it easy for software 
+                  providers and end users alike. With our user-friendly interface, you'll navigate the licensing landscape 
+                  with confidence.
+                </p>
+
+                <br />
+
+                <h3>Enhance Security:</h3>
+                <p>In an era of increasing cybersecurity threats, safeguarding your license data is non-negotiable. 
+                  LicenHub employs state-of-the-art encryption and security measures to protect your valuable license information.
+                </p>
+
+                <br />
+
+                <h3>Real-Time Validation:</h3>
+                <p>Instantly verify the authenticity of your licenses with LicenHub's real-time validation service. 
+                   For software providers, this means ensuring that clients are using licensed software, while end 
+                   users can have peace of mind knowing their software is legitimate.
+                </p>
+
+                <br />
+
+                <h3>Enforce Compliance:</h3>
+                <p>Software providers can enforce license compliance with ease, preserving their intellectual 
+                   property and ensuring fair use of their products. LicenHub simplifies the process of conducting 
+                   license audits and related enforcement actions.
+                </p>
+
+                <br />
+
+                <h3>Empowering Both Sides:</h3>
+                <p>Whether you're a software provider or an end user, LicenHub empowers you. It fosters trust, 
+                   compliance, and efficient license management, creating a win-win scenario for all stakeholders.
+                </p>
+
+                <br />  
+                  
+                <blockquote>But don't just take our word for it; explore LicenHub for yourself.</blockquote> 
+                  
+
+                <br />
+
+                <h3>Experience the Future of Licensing</h3>
+                <p>Let's embark on a journey to simplify and secure your licensing processes. 
+                   LicenHub is more than just a platform; it's your partner in achieving licensing excellence. 
+                   So, dive in, explore the possibilities, and elevate your license management experience. 
+                   The future of licensing starts here.
+                </p>  
+
+            </div>
+            </div>
+          </div>
+        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================== WORK SECTION ======================================== -->
+    <section id="workSection" class="text-center">
+      <div class="overlay">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-md-6">
+              <div class="work-box">
+                <div class="txt-box">
+                  <h2><span class="counter">9423</span></h2>
+                  <p>Enrolled Users</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="work-box box-2">
+                <div class="txt-box">
+                  <h2><span class="counter">2685</span></h2>
+                  <p>Satiisfied Clients</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mt-4 pt-1 mt-md-0 pt-md-0">
+              <div class="work-box box-3">
+                <div class="txt-box">
+                  <h2><span class="counter">246</span></h2>
+                  <p>Projects Launched</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="work-box box-4">
+                <div class="txt-box">
+                  <h2><span class="counter">358</span></h2>
+                  <p>Featured Patnerships</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================== TESTIMONIAL SECTION ======================================== -->
+    <section id="testimonialSection">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="sec-header">
+              <h2>CUSTOMER FEEDBACKS<span>.</span></h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="owl-carousel">
+              <div class="testimonial-box">
+                <div class="top-part">
+                  <div class="client">
+                    <img src="img/jhon.jpeg" alt="" />
+                  </div>
+                  <div class="txt">
+                    <p>JHON SMILGA</p>
+                    <span>IT ANALYST</span>
+                  </div>
+                  <div class="quote">
+                    <img src="img/icon/quote.png" class="img01" alt="" />
+                    <img src="img/icon/quote02.png" class="img02" alt="" />
+                  </div>
+                </div>
+                <p class="feedback">
+                  "Your license management system has made my job so much
+                  easier. I used to spend hours dealing with spreadsheets, but
+                  now, everything is effortless. The real-time visibility and
+                  analytics are invaluable for my daily tasks."
+                </p>
+              </div>
+              <div class="testimonial-box">
+                <div class="top-part">
+                  <div class="client">
+                    <img src="img/samantha.jpg" alt="" />
+                  </div>
+                  <div class="txt">
+                    <p>SAMANTHA AKKINENI</p>
+                    <span>MANAGING DIRECTOR - ELEKS</span>
+                  </div>
+                  <div class="quote">
+                    <img src="img/icon/quote.png" class="img01" alt="" />
+                    <img src="img/icon/quote02.png" class="img02" alt="" />
+                  </div>
+                </div>
+                <p class="feedback">
+                  "Our organization was struggling to manage software licenses
+                  effectively. Your license management system has been a
+                  game-changer. It streamlined our processes, improved
+                  compliance, and helped us optimize our software investments.
+                  We're incredibly satisfied with the results."
+                </p>
+              </div>
+              <div class="testimonial-box">
+                <div class="top-part">
+                  <div class="client">
+                    <img src="img/blake.jpg" alt="" />
+                  </div>
+                  <div class="txt">
+                    <p>BLAKE WINDSOR</p>
+                    <span>SENOIR WEB DEVELPER - RMX</span>
+                  </div>
+                  <div class="quote">
+                    <img src="img/icon/quote.png" class="img01" alt="" />
+                    <img src="img/icon/quote02.png" class="img02" alt="" />
+                  </div>
+                </div>
+                <p class="feedback">
+                  "We needed a license management system that could adapt to our
+                  unique needs and complex workflows. Your system not only met
+                  but exceeded our expectations with its customization options.
+                  The tailored solutions have made a significant difference in
+                  our operations."
+                </p>
+              </div>
+              <div class="testimonial-box">
+                <div class="top-part">
+                  <div class="client">
+                    <img src="img/davidson.jpg" alt="" />
+                  </div>
+                  <div class="txt">
+                    <p>COOPER DAVIDSON</p>
+                    <span>MANAGER</span>
+                  </div>
+                  <div class="quote">
+                    <img src="img/icon/quote.png" class="img01" alt="" />
+                    <img src="img/icon/quote02.png" class="img02" alt="" />
+                  </div>
+                </div>
+                <p class="feedback">
+                  "As an IT manager, I've used various license management
+                  systems, but yours is a cut above the rest. The support team
+                  is exceptional, and the software's security features give me
+                  peace of mind. It's a pleasure to work with your system."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================== CONTACT AREA 2 ======================================== -->
+    <section id="contactArea">
+      <div class="container">
+        <div class="contact-box wow fadeInRightBi" data-wow-duration="1.5s">
+          <div class="row">
+            <div class="col-lg-9 mb-3 mb-lg-0">
+              <div class="sec-header">
+                <h2>LET'S GET YOUR PROJECT <br />STARTED<span>.</span></h2>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <a href="contact.html" class="btn layer-btn">CONTACT WITH US</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================== FOOTER SECTION ======================================== -->
+    <section id="footerSection">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <div class="footer-box">
+              <a href="#" class="logo">LICENHUB</a>
+              <p class="about">
+                "Empowering businesses with efficient, secure, and
+                cost-effective license management solutions. Your success is our
+                priority, and we're committed to delivering exceptional service
+                and value. Discover the difference with LicenHub today.
+              </p>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="mr-0"><i class="fab fa-github"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-5 mb-lg-0">
+            <div class="footer-box box2">
+              <p class="title">EXPLORE</p>
+              <ul>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">Privacy</a></li>
+                <li><a href="#">Policy</a></li>
+                <li><a href="#">Terms Of Use</a></li>
+                <li class="mb-0"><a href="#">Help</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+            <div class="footer-box box3">
+              <p class="title">CONTACT</p>
+              <div class="icon-box">
+                <div class="icon">
+                  <i class="fal fa-map-marker-alt"></i>
+                </div>
+                <div class="txt">
+                  <span>376 Ruderford Street, Montreal, Quebec. CANADA</span>
+                </div>
+              </div>
+              <div class="icon-box">
+                <div class="icon">
+                  <i class="fal fa-envelope"></i>
+                </div>
+                <div class="txt">
+                  <span>licenhub@gmail.com</span>
+                </div>
+              </div>
+              <div class="icon-box mb-0">
+                <div class="icon">
+                  <i class="fal fa-phone-alt"></i>
+                </div>
+                <div class="txt">
+                  <span>+1 514-531-3499</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-box box4">
+              <p class="title">NEWSLETTER</p>
+              <form>
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Email Address"
+                  />
+                </div>
+                <button type="submit" class="btn" name="button">
+                  <i class="fal fa-envelope"></i>
+                </button>
+              </form>
+              <span
+                >Sign up for our latest news & articles. We won’t give you spam
+                mails.</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="copy-right">
+          <div class="row">
+            <div class="col">
+              <span>Copyright © 2023 LicenHub. All rights reserved.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================== SCROLL TO TOP ICON ======================================== -->
+    <a href="#" class="scroll-up">
+      <i class="fal fa-chevron-up"></i>
+    </a>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/font-awesome-pro.js"></script>
+    <script src="js/custom.js"></script>
+    <script></script>
+  </body>
 </html>

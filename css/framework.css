@@ -2,7 +2,7 @@
 :root {
     --color-primary: #6f7cf4;
     --color-link-bg:#8790e622;
-    --color-danger:#ff7782;
+    --color-dangerous:#ff7782;
     --color-success:#41f1b6;
     --color-warning:#ffbb55;
     --color-body:#f6f6f9;
@@ -51,4 +51,16 @@ a {
 }
 .visible{
     display:block;
+}
+.success{
+    color:var(--color-success)!important;
+}
+.dangerous{
+    color:var(--color-dangerous)!important;
+}
+.warning{
+    color:var(--color-warning);
+}
+.primary{
+    color:var(--color-primary);
 }

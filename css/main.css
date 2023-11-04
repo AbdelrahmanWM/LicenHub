@@ -1,7 +1,7 @@
 :root {
     --color-primary: #6f7cf4;
     --color-link-bg:#8790e622;
-    --color-danger:#ff7782;
+    --color-dangerous:#ff7782;
     --color-success:#41f1b6;
     --color-warning:#ffbb55;
     --color-body:#f6f6f9;
@@ -9,6 +9,7 @@
     --color-border:#e7e0e0df;
     --color-shadow:#6f7cf463;
     --color-gray-bg:rgba(132,139,200,0.18);
+
 
     --border-hovering:2px solid var(--color-shadow);
     --border-transparent:2px solid transparent;
@@ -183,7 +184,7 @@ main h1:hover {
 @media screen and (max-width: 1200px){
 /* container */
 .container {
-    grid-template-columns:7rem auto 23rem;
+    grid-template-columns:7rem auto 18rem;
 }
 /* aside */
 aside .top .logo h2{
@@ -395,6 +396,16 @@ main.p_customers .customersInfo .filters input[type="text"]{
     background-color: var(--color-white);
     border-radius: var(--border-raduis-1);
 }
+main.p_customers .customersInfo .filters input[type="text"],
+main.p_customers .customersInfo .filters button,
+main.p_customers .customersInfo table{
+border:var(--border-transparent);
+}
+main.p_customers .customersInfo .filters input[type="text"]:hover,
+main.p_customers .customersInfo .filters button:hover,
+main.p_customers .customersInfo table:hover{
+border:var(--border-hovering);
+}
 main.p_customers .customersInfo .filters button {
     background-color: var(--color-white);
     padding:0.5rem;
@@ -402,25 +413,61 @@ main.p_customers .customersInfo .filters button {
     color:var(--color-dark);
 }
 main.p_customers .customersInfo table {
+    font-size:0.8rem;
     width:100%;
-    border-collapse:collapse;
+    border-radius: var(--border-raduis-2);
+    /* border-collapse:collapse; */
     background-color: var(--color-white);
     border-radius: var(--border-raduis-2);
-    padding:1rem;
- 
+
+}
+main.p_customers .customersInfo table thead,
+main.p_customers .customersInfo table tbody{
+    border-radius: var(--border-raduis-2);
 }
 main.p_customers .customersInfo table tbody tr:not(:first-child){
    border-top:1px solid var(--color-border);
 }
+
 main.p_customers .customersInfo table td,
 main.p_customers .customersInfo table th{
-    padding:1.5rem 1rem;
+    padding:0.3rem ;
+    width:fit-content;
+    /* margin:0 0.5rem; */
 
+}
+main.p_customers .customersInfo table th{
+padding-top:2rem;
+}
+
+main.p_customers .customersInfo table tr:last-child td{
+    padding-bottom:2rem;
+}
+
+main.p_customers .customersInfo table tr{
+    width:90%;
+}
+main.p_customers .customersInfo table td:hover{
+    font-weight:600;
 }
 main.p_customers .customersInfo table td{
    
     color:var(--color-link);
     text-align: center;
+}
+
+@media screen and (max-width:1200px){
+    main.p_customers .customersInfo table td:nth-child(3),
+    main.p_customers .customersInfo table td:nth-child(4),
+    main.p_customers .customersInfo table th:nth-child(3),
+    main.p_customers .customersInfo table th:nth-child(4){
+        display:none;
+    } 
+}
+@media screen and (max-width:768px){
+    main.p_customers .info{
+        grid-template-columns: 1fr;
+    }
 }
 /*******************/
 /************************************************/
