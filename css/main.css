@@ -685,3 +685,42 @@ main.p_customers .customersInfo table td{
 .link-signin a:hover{
     text-decoration: underline;
 }
+/*----------------------------------------------------------------------*/
+/* Css content for client_licenseManagement.html */
+
+.client-serialnum{
+    border-spacing: 50px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.client-serialnum input{
+    text-align: center;
+    color: var(--color-primary);
+}
+
+.client-serialnum input::placeholder{
+    color: var(--color-primary);
+}
+
+.client-serialnum td{
+    color:rgb(125, 141, 161);
+}
+
+.search-sort{
+    margin-top: 50px;
+    margin-left: 60px;
+}
+
+.license-search{
+    margin-right: 590px
+}
+
+.save-changes-button{
+    background-color: var(--color-primary);
+    color: white;
+    padding: 10px 15px 10px 15px;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
