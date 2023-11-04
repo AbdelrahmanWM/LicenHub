@@ -736,11 +736,21 @@ main.p_notifications .notifications .notification .time{
     border-spacing: 50px;
     font-size: 14px;
     text-align: center;
+    border: 1px solid var(--color-primary);
+    border-radius: 50px;
 }
 
 .client-serialnum input{
     text-align: center;
     color: var(--color-primary);
+    border-radius: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(246, 246, 249);
+    border: 1px solid var(--color-primary);
+    padding-left: 10px;
+    padding-right: 10px;
+
 }
 
 .client-serialnum input::placeholder{
@@ -753,11 +763,19 @@ main.p_notifications .notifications .notification .time{
 
 .search-sort{
     margin-top: 50px;
-    margin-left: 60px;
+    margin-left: 50px;
+    margin-bottom: 5px;
 }
 
 .license-search{
-    margin-right: 590px
+    padding-right:0px;
+    text-align: center;
+    padding: 1px;
+    border-radius: 20px;
+    text-align: center;
+    padding: 9px 5px 9px 5px;
+    background-color: rgb(246, 246, 249);
+    border: 1px solid var(--color-primary);
 }
 
 .save-changes-button{
@@ -767,4 +785,14 @@ main.p_notifications .notifications .notification .time{
     border-radius: 30px;
     cursor: pointer;
 }
+
+.license-sortSelect{
+    border: 1px solid var(--color-primary);
+    padding: 9px 4px 9px 4px;
+    text-align: center;
+    border-radius: 20px;
+    background-color: rgb(246, 246, 249);
+
+}
+
 
