@@ -128,7 +128,10 @@ main h1:hover {
     color:var(--color-primary);
 }
 /* .right */
-
+.right {
+    /* display:grid;
+    grid:2rem; */
+}
 .right .top{
     display:flex;
     justify-content:flex-end;
@@ -174,6 +177,82 @@ main h1:hover {
 .right .top .profile .profile-image img{
     width:100%;
     height:100%;
+}
+.right .notifications{
+    display:grid;
+}
+.right .notifications h2{
+    margin-top:2rem;
+    margin-bottom:1rem;
+}
+.right .notifications .notification{
+margin:2rem 0;
+padding:0.5rem;
+}
+.right .notifications .notification .message{
+display:flex;
+
+}
+.right .notifications .notification .message p{
+    opacity: 70%;
+}
+.right .notifications .contents{
+    background-color: var(--color-white);
+    padding:1rem;
+    border-radius: var(--border-raduis-2);
+    border:var(--border-transparent)
+
+}
+.right .notifications .contents:hover{
+    border:var(--border-hovering);
+}
+
+
+.right .notifications .notification .message img{
+width:2rem;  
+height:2rem;  
+margin-right:1rem;
+border-radius: 50%;
+}
+.right .notifications .notification .time{
+    opacity: 50%;
+}
+.right .notifications .notification .time{
+    margin-left:3rem;
+}
+.right .analytics{
+    margin-top:1.5rem;
+}
+.right .analytics h2{
+    margin-top:2rem;
+    margin-bottom:1rem;
+}
+.right .analytics .info{
+    padding:1rem;
+    background-color: var(--color-white);
+    margin-bottom:2rem;
+    border-radius: var(--border-raduis-2);
+    border:var(--border-transparent);
+}
+.right .analytics .info:hover {
+    border:var(--border-hovering);
+}
+.right .analytics .info .box{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.right .analytics .info .box>span{
+    background-color: var(--color-dangerous);
+    color:var(--color-white);
+    padding:0.5rem;
+    border-radius: 50%;
+}
+.right .analytics .info:last-child .box>span{
+    background-color: var(--color-success);
+}
+.right .analytics .info .bottom{
+    opacity: 50%;
 }
 /*
      Responsive Media Queries
@@ -327,14 +406,78 @@ main.p_account .info input:focus{
 main.p_account .info input:focus main.p_account .info{
     border:var(--border-transparent);
 }
-main.p_account .info:last-child{
+main.p_account .info.submit{
     width:fit-content;
 }
-main.p_account .info:last-child input {
+main.p_account .info.submit input {
     width:fit-content;
     background-color: transparent;
     font-weight: 700;
     /* color:var(--color-primary) */
+}
+/* @media screen and (max-width: 1200px){
+    main.p_account .information {
+        width:100%;
+    }
+    }
+    
+    @media screen and (max-width:768px){
+
+    }
+     */
+
+/************************/
+/* provider_settings   */
+main.p_settings .information {
+    /* background-color: var(--color-white); */
+    display:grid;
+    width:100%;
+    grid-template-columns: auto-fill;
+    grid-gap:10px;
+    margin-top:2rem;
+   
+}
+
+main.p_settings .information .info{
+    display:flex;
+    justify-content: space-between;
+    background-color: var(--color-white);
+    padding:0.8rem;
+    border-radius:var(--border-raduis-1);
+    border:var(--border-transparent);
+    
+}
+
+main.p_settings .information>.info:hover {
+    border:var(--border-hovering);
+    
+}
+main.p_settings .info input,main.p_settings .info select {
+    padding:0.4rem;
+    color:var(--color-dark);
+    background-color:var(--color-body);
+    border-radius: var(--border-raduis-1);
+    width:75%;
+    border:var(--border-transparent);
+}
+
+main.p_settings >.info input:focus{
+   border:var(--border-hovering);
+}
+
+main.p_settings .info input:focus main.p_settings .info{
+    border:var(--border-transparent);
+}
+main.p_settings .info.payment {
+    display:grid;
+    grid-template-columns: 1fr;
+}
+main.p_settings .info.payment .top{
+    display:flex;
+    justify-content: space-between;
+}
+main.p_settings .info.payment .top button{
+    background-color: transparent;
 }
 /* @media screen and (max-width: 1200px){
     main.p_account .information {

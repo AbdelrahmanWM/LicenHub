@@ -64,3 +64,11 @@ a {
 .primary{
     color:var(--color-primary);
 }
+
+.clickable{
+    cursor:pointer;
+}
+
+.bold{
+    font-weight: bold;
+}

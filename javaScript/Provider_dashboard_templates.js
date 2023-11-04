@@ -96,6 +96,74 @@ let rightContent=`
     </div>
 </div>
 </div>
+
+<div class="notifications">
+  <h2>Recent Notifications</h2>
+  <div class="contents">
+  <div class="notification">
+    <div class="message">
+      <img src="../images/download (1).png" alt="">
+      <p>Danny Down renewed his <span class="bold">DataDash</span> subscription</p>
+    </div>
+    <div class="time">
+      <small>4 minutes ago</small>
+    </div>
+  </div>
+
+    <div class="notification">
+      <div class="message">
+        <img src="../images/images.jpeg" alt="">
+        <p>Sara Hany renewed her <span class="bold">CyberConnect</span > subscription</p>
+      </div>
+      <div class="time">
+        <small>45 minutes ago</small>
+      </div>
+    </div>
+
+      <div class="notification">
+        <div class="message">
+          <img src="../images/download.png" alt="">
+          <p>David Due requisted to close his account</p>
+        </div>
+        <div class="time">
+          <small>2 hours ago</small>
+        </div>
+        </div>
+  </div>
+</div>
+<div class="analytics">
+<h2>Analytics</h2>
+<div class="info">
+  <div class="box">
+    <span class="material-symbols-sharp">shopping_cart </span>
+    <div class="contents">
+      <div class="top">
+        <span>Subsciptions</span>
+        <span class="success">+54%</span>
+        <span>102</span>
+      </div>
+      <div class="bottom">
+        <small>last 24 hours</small>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="info">
+  <div class="box">
+    <span class="material-symbols-sharp">account_circle </span>
+    <div class="contents">
+      <div class="top">
+        <span>New Customers</span>
+        <span class="success">+24%</span>
+        <span>16</span>
+      </div>
+      <div class="bottom">
+        <small>last 24 hours</small>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 `;
 
 document.querySelector('.right').innerHTML=rightContent;

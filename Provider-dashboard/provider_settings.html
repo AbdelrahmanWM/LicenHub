@@ -30,20 +30,56 @@
 <script src="javaScript/template.js"></script> -->
 
 <body>
-    <div class="container">
-        <aside>
-                <!--  aside template generated here -->
-        </aside>
-        <main>
-        <h1>Settings</h1>
-        </main>
-        <div class="right">
+  <div class="container">
+    <aside>
+          <!--  aside template generated here -->
+    </aside>
+    <main class="p_settings">
+      <h1>Settings</h1>
+    <form class="information" method="post">
+    
+      <div class="info">
+        <label for="servicenotification">Service Notifications</label>
+        <select name="servicenotification" id="servicenotification">
+          <option value="Disabled">Disabled</option>
+          <option value="Enabled" selected>Enabled &lpar;recommended&rpar;</option>
+        </select>
+      </div>
+      <div class="info">
+        <label for="emailinvoices">Receive Email Invoices</label>
+        <select name="emailinvoices" id="emailinvoices">
+          <option value="Disabled">Disabled</option>
+          <option value="Enabled" selected>Enabled</option>
+        </select>
+      </div>
+      <div class="info">
+        <label for="2stepverification">Two-step verification</label>
+        <select name="2stepverification" id="2stepverification">
+          <option value="Disabled" selected>Disabled</option>
+          <option value="Enabled" >Enabled</option>
+        </select>
+      </div>
+      <div class="info payment">
+        <div class="top"><p>Your payment method</p> <button class="primary clickable bold">ADD NEW</button></div>
+      <div class="info">
+        <label for="paymentmethod">default payment method</label>
+        <select name="paymentmethod" id="paymentmethod">
 
-        </div>
+          <option value="Disabled" selected>VISA **4232</option>
+          <option value="Enabled" >CREDET **2332</option>
+      </div>
+        </select>
+      </div>
+    </form>
+    </main>
+    <div class="right">
+
     </div>
+</div>
 
-    <script src="../javaScript/Provider_dashboard_templates.js"></script>
-    <script src="../javaScript/main.js"></script>
+<script src="../javaScript/Provider_dashboard_templates.js"></script>
+<script src="../javaScript/main.js"></script>
+
 
 </body>
 </html>

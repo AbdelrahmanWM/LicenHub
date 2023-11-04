@@ -89,6 +89,7 @@ let rightContent=`
     </div>
 </div>
 </div>
+
 `;
 
 document.querySelector('.right').innerHTML=rightContent;

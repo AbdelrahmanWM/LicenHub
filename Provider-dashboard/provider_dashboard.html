@@ -28,20 +28,135 @@
     
 </head>
 <body>
-    <div class="container">
-        <aside >
-            <!--  aside template generated here by Provider_dashboard_templates.js file-->
-        </aside>
-        <main>
-        <h1>Dashboard</h1>
-        </main>
-        <div class="right">
-          <!--  .right template generated here by Provider_dashboard_templates.js file-->
-        </div>
-    </div>
+  <div class="container">
+    <aside>
+     <!--  aside template generated here -->
+    </aside>
+    <main class="p_customers">
 
-    <script src="../javaScript/Provider_dashboard_templates.js"></script>
-    <script src="../javaScript/main.js"></script>
+    <h1>Dashboard</h1>
+    <div class="info">
+      <div class="customers">
+        <div class="description">
+          <span class="material-symbols-sharp">person</span>
+          <h3>All Customers</h3>
+          <span class="material-symbols-sharp">more_vert</span>
+        </div>
+        <div class="details">
+         <span><img src="" alt=""></span>
+         <span>1000</span>
+        </div>
+      </div>
+      <div class="orders">
+        <div class="description">
+        <span class="material-symbols-sharp">deployed_code_account</span>
+         <h3>Orders</h3>
+         <span class="material-symbols-sharp">more_vert</span>
+        </div>
+         <div class="details">
+          <span>500</span>
+          <span>5.9%</span>
+         </div>
+      </div>
+      <div class="Payments">
+        <div class="description">
+        <span class="material-symbols-sharp">point_of_sale</span>
+        <h3>Invoices & Payments</h3>
+        <span class="material-symbols-sharp">more_vert</span>
+      </div>
+        <div class="details">
+          <span>$8,800.00</span>
+          <span>60.2%</span>
+        </div>
+      </div>
+    </div>
+    <div class="customersInfo">
+      <div class="filters">
+      <input type="text" id="search" name="search" placeholder="Search">
+      <button><span></span> More filters</button>
+      </div>
+      <table class="customers">
+        <thead>
+          <tr>
+            <th>Customer</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Created Date</th>
+            <!-- <th>Last Activity</th> -->
+            <th>Subscription</th>
+            <th>Serial Number</th>
+             <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><b>David Duo</b></td>
+            <td>David123@gmail.com</td>
+            <td class="success">Active</td>
+            <td>2023-01-15</td>
+            <td class="success">Active</td>
+            <td>SN12345,<br>SN67890</td>
+            <td><span class="primary">Edit</span><br><span class="dangerous">Disable</span><br><span class="warning">Notify</span> </td>
+          </tr>
+          <tr>
+            <td><b>Albert Alex</b></td>
+            <td>AlbertAlex@gmail.com</td>
+            <td class="success">Active</td>
+            <td>2023-04-14</td>
+            <td class="success">Active</td>
+            <td>SN12355</td>
+            <td><span class="primary">Edit</span><br><span class="dangerous">Disable</span><br><span class="warning">Notify</span> </td>
+          </tr>
+          <tr>
+            <td><b>David Romeo</b></td>
+            <td>David123@gmail.com</td>
+            <td class="success">Active</td>
+            <td>2023-01-15</td>
+            <td class="success">Active</td>
+            <td>SN13745,<br>SN46860</td>
+            <td><span class="primary">Edit</span><br><span class="dangerous">Disable</span><br><span class="warning">Notify</span> </td>
+          </tr>
+          <tr>
+            <td><b>Sara Shady</b></td>
+            <td>David123@gmail.com</td>
+            <td class="dangerous">idle</td>
+            <td>2023-01-15</td>
+            <td class="dangerous">idle</td>
+            <td>SN89654</td>
+            <td><span class="primary">Edit</span><br><span class="dangerous">Disable</span><br><span class="warning">Notify</span> </td>
+          </tr>
+          <tr>
+            <td><b>Ali Ahmed</b></td>
+            <td>David123@gmail.com</td>
+            <td class="success">Active</td>
+            <td>2023-01-15</td>
+            <td class="success">Active</td>
+            <td>SN14745,<br>SN64490</td>
+            <td><span class="primary">Edit</span><br><span class="dangerous">Disable</span><br><span class="warning">Notify</span> </td>
+          </tr>
+          <tr>
+            <td><b>Rana Dowleng</b></td>
+            <td>David123@gmail.com</td>
+            <td class="success">Active</td>
+            <td>2023-01-15</td>
+            <td class="success">Active</td>
+            <td>SN12666</td>
+            <td><span class="primary">Edit</span><br><span class="dangerous">Disable</span><br><span class="warning">Notify</span> </td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+    </main>
+    <div class="right">
+ 
+
+      </div>
+    
+</div>
+
+<script src="../javaScript/Provider_dashboard_templates.js"></script>
+<script src="../javaScript/main.js"></script>
 
 </body>
 </html>
