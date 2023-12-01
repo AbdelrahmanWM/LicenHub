@@ -1,8 +1,3 @@
-/**
- * Here we handle the light/dark mode
- */
-
-
 
 
 let darkmode = document.getElementById("darkmode");
@@ -79,19 +74,3 @@ close.onclick = function(){
 /**
  * For the Login&Registration form
  */
-document.getElementById("login-form").addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent the default form submission
-    const userType = document.querySelector('input[name="user-type"]:checked');
-    const email = document.getElementById("email-input").value;
-    const password = document.getElementById("password-input").value;
-
-    if (userType && email && password) {
-        if (userType.value === "client") {
-            window.location.href = "Client-dashboard\\client_dashboard.html"; // Redirect to the client page
-        } else if (userType.value === "provider") {
-            window.location.href = "Provider-dashboard/provider_dashboard.html"; // Redirect to the provider page
-        }
-    } else {
-        alert("Please fill in all the required fields and select user type.");
-    }
-});

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LicenHub registration</title>
+    <link rel="stylesheet" href="../css/framework.css">
+    <link rel="stylesheet" href="../css/main.css">
+
+    <!-- Poppins font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="import" href="templates/asideTemplate.html">
+    <script src="javaScript/template.js"></script> -->
+
+    <!-- Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body class="body-register">
+    <div class="register-area">
+        <form class="register-form" id="register-form" action ='/register'  method="POST">
+            <h1>Sign Up</h1>
+            <div class="register-client-provider">
+                <p>What type of account would you like to create?</p>
+                <label class="register-client">
+                    <input type="radio" name="userType" value="C" checked>
+                    Client 
+                </label>
+                 <span>or</span>
+                <label class="register-provider">
+                    <input type="radio" name="userType" value="P">
+                    Provider 
+                </label>
+            </div>
+            <div class="user-register-info">
+                <div class="user-fname">
+                    <input type="text" name="fname" placeholder="Fist name" required>
+                </div>
+                <div class="user-lname">
+                    <input type="text" name="lname" placeholder="Last name" required>
+                </div>
+                <div class="user-email">
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="create-password">
+                    <input type="password" name="password" placeholder="Create password" required>
+                </div>
+                <div class="confirm-password">
+                    <input type="password" name="confirm-password" placeholder="Confirm password" required>
+                </div>
+            </div>
+            <div>
+                <button class="signup-button" type="submit">Sign-up</button>
+            </div>
+            <div class="link-signin">
+                <p>Have an account already? <a href="Login&Register.html">Sign in here</a></p>
+            </div>
+        </form>
+    </div>
+    
+    <!--Script -->
+    <script>
+        document.getElementById("register-form").addEventListener('submit',async function(event) {
+
+            let password = document.querySelector('input[name="password"]').value;
+            let confirmPassword = document.querySelector('input[name="confirm-password"]').value;
+     
+           
+
+            if (password !== confirmPassword) {
+                event.preventDefault(); //Prevent form submission if passwords do not match
+                alert("Passwords do not match!");
+            }
+//  let fname=document.querySelector('input[name="fname"]').value;
+//             let lname=document.querySelector('input[name="lname"]').value;
+//             let email = document.querySelector('input[name="email"]').value;
+// let userType = document.querySelector('input[name="userType"]').value;
+// console.log("here1");
+// try {
+//   const response = await fetch('http://localhost:5000/register', {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({ userType, fname, lname, email, password }),
+//   });
+//   console.log("here2");
+//   const result = await response.json();
+
+//   if (response.ok) {
+//     alert(result.message); // Display an alert with the message from the server
+//   } else {
+//     alert('Failed to register.'); // You can customize the message based on your needs
+//   }
+// } catch (error) {
+//   console.error("Error during registration: ", error);
+//   //   alert('Internal server error');
+// }
+
+
+          
+    //      userTypeElement = document.querySelector('input[name="user-type"]:checked');
+    //      let firstName = document.querySelector('input[name="fname"]').value;
+    //         let lastName = document.querySelector('input[name="lname"]').value;
+
+    //         let email= document.querySelector('input[name="email"]').value;
+    // if (userTypeElement) {
+    //     let userType = userTypeElement.value;
+
+        // Continue with the rest of your code...
+
+        // const studentData = { 
+        //     userType, firstName, lastName, email, password
+        // };
+
+        // SQL Query to Insert Student
+    //     const insertQuery = 'INSERT INTO users SET ?';
+
+    //     // Insert Student
+    //     db.query(insertQuery, studentData, (error, result) => {
+    //         if (error) {
+    //             console.log("Error inserting student:", error);
+    //         } else {
+    //             console.log("Student inserted successfully", result);
+    //         }
+    //     });
+
+    //     res.json({ message: responseMessage });
+    // } else {
+    //     event.preventDefault(); // Prevent form submission if user-type is not selected
+    //     alert("Please select the account type (Client or Provider).");
+    // }
+
+            // let firstName=document.querySelector('input[name="fname"]').value;
+            // let lastName=document.querySelector('input[name="lname"]').value;
+            // let email=document.querySelector('input[name="user-email"]').value;
+            // let userType=document.querySelector('input[name="user-type"]').value;
+            // try{
+            //     const response=await fetch('http://localhost:5000/register',{
+            //         method:'POST',
+            //         headers:{
+            //             'Content-Type':'application/json',
+            //         },
+            //         body:JSON.stringify({firstName,lastName,email,password,userType}),
+            //     });
+            //     const result=await response.json();
+            //     if(response.ok){
+            //         alert("Successfully registered.");
+            //     }
+            //     else{
+            //         alert("Failed to register.");
+            //     }
+            // }
+            // catch(error){
+            //     console.error("Error during registeration: ",error);
+            //     alert('Internal server error');
+            // }
+            
+        } );
+    </script>
+    <!--Script -->
+<!-- <script src="javascript/main.js"></script> -->
+
+</body>
+</html>
