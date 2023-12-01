@@ -69,7 +69,7 @@ initializeAside();
  * Here we inject the .right class content template into the .right class of all provider dashboard subpages.
  * 
  */
-
+let username=JSON.parse(localStorage.getItem('user')).firstname;
 let rightContent=`
 <div class="top">
 <div class="menu" id="menu">
@@ -81,7 +81,7 @@ let rightContent=`
 </div>
 <div class="profile">
     <div class="info">
-        <p>Hey, <b>Daniel</b></p>
+        <p>Hey, <b>${username}</b></p>
         <small>Admin</small>
     </div>
     <div class="profile-image">

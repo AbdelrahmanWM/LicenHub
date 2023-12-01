@@ -76,7 +76,7 @@ initializeAside();
  * Here we inject the .right class content template into the .right class of all provider dashboard subpages.
  * 
  */
-let username="Albert";
+let username=JSON.parse(localStorage.getItem('user')).firstname;
 let rightContent=`
 <div class="top">
 <div class="menu" id="menu">

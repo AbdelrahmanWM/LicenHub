@@ -24,7 +24,7 @@
 
 <body class="body-register">
     <div class="register-area">
-        <form class="register-form" id="register-form" action ='/register'  method="POST">
+        <form class="register-form" id="register-form" >
             <h1>Sign Up</h1>
             <div class="register-client-provider">
                 <p>What type of account would you like to create?</p>
@@ -67,41 +67,43 @@
     <!--Script -->
     <script>
         document.getElementById("register-form").addEventListener('submit',async function(event) {
-
-            let password = document.querySelector('input[name="password"]').value;
-            let confirmPassword = document.querySelector('input[name="confirm-password"]').value;
-     
-           
-
+            event.preventDefault();
+            const password = document.querySelector('input[name="password"]').value;
+            const confirmPassword = document.querySelector('input[name="confirm-password"]').value;
+            const fname=document.querySelector('input[name="fname"]').value;
+            const lname=document.querySelector('input[name="lname"]').value;
+            const email = document.querySelector('input[name="email"]').value;
+            const userType = document.querySelector('input[name="userType"]:checked').value;
             if (password !== confirmPassword) {
-                event.preventDefault(); //Prevent form submission if passwords do not match
+               
                 alert("Passwords do not match!");
             }
-//  let fname=document.querySelector('input[name="fname"]').value;
-//             let lname=document.querySelector('input[name="lname"]').value;
-//             let email = document.querySelector('input[name="email"]').value;
-// let userType = document.querySelector('input[name="userType"]').value;
-// console.log("here1");
-// try {
-//   const response = await fetch('http://localhost:5000/register', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({ userType, fname, lname, email, password }),
-//   });
-//   console.log("here2");
-//   const result = await response.json();
+          else{
 
-//   if (response.ok) {
-//     alert(result.message); // Display an alert with the message from the server
-//   } else {
-//     alert('Failed to register.'); // You can customize the message based on your needs
-//   }
-// } catch (error) {
-//   console.error("Error during registration: ", error);
-//   //   alert('Internal server error');
-// }
+// console.log("here1");
+try {
+  const response = await fetch('/register', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ userType:userType, fname:fname, lname:lname, email:email, password:password }),
+  });
+  const result = await response.json();
+
+  if (result.status=="success") {
+    alert("Successfully created an account"); 
+    window.location.href="Login&Register.html";
+  } else if(result.status=='exists'){
+    alert('Account already exists'); // You can customize the message based on your needs
+  }
+  else{
+    alert("Error with the response.");
+  }
+} catch (error) {
+  console.error("Error during registration: ", error);
+  //   alert('Internal server error');
+}
 
 
           
@@ -162,7 +164,7 @@
             //     alert('Internal server error');
             // }
             
-        } );
+       } } );
     </script>
     <!--Script -->
 <!-- <script src="javascript/main.js"></script> -->

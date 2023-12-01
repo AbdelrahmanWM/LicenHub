@@ -51,7 +51,7 @@
 <script>
     
 document.getElementById("login-form").addEventListener("submit", async function (event) {
-    console.log("Form submitted"); 
+    //console.log("Form submitted"); 
     event.preventDefault();
     // preventDefault();
     const userType = document.querySelector('input[name="user-type"]:checked');
@@ -69,11 +69,16 @@ document.getElementById("login-form").addEventListener("submit", async function 
         const data = await response.json();
 
      
-      
+        const type=data.userType;
         if(data.userType=='P'){
+            localStorage.setItem('user',JSON.stringify(data.user));
+            alert(`Welcome ${JSON.parse(localStorage.getItem('user')).firstname}!`);
+          
              window.location.href = "../Provider-dashboard/provider_dashboard.html"; // Redirect to the provider page
         }
         else if(data.userType=="C"){
+            localStorage.setItem('user',JSON.stringify(data.user));
+            alert(`Welcome ${JSON.parse(localStorage.getItem('user')).firstname}!`);
              window.location.href = "../Client-dashboard/client_dashboard.html"; // Redirect to the provider page
         }
         else if(data.userType=="W"){

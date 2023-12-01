@@ -65,17 +65,18 @@ app.post('/register', (req, res) => {
     
     // Handle registration logic here
     // For demonstration purposes, just send a response with the form data
-    const responseMessage = `Registration successful!\n
-      User Type: ${userType}\n
-      First Name: ${firstName}\n
-      Last Name: ${lastName}\n
-      Email: ${email}\n
-      Password: ${password}`;
+    // const responseMessage = `Registration successful!\n
+    //   User Type: ${userType}\n
+    //   First Name: ${firstName}\n
+    //   Last Name: ${lastName}\n
+    //   Email: ${email}\n
+    //   Password: ${password}`;
   
     // Send a response
     const StudentData={ 
         userType,firstName,lastName,email,password
     }
+    console.log(StudentData);
     const selectQuery=`SELECT * FROM users WHERE firstname = '${firstName}' AND lastname = '${lastName}' AND email = '${email}'`;
     ;
     db.query(selectQuery,(error,result)=>{
@@ -85,6 +86,7 @@ app.post('/register', (req, res) => {
         else{
             if(Object.keys(result).length>0){
             console.log("This user already exists.")
+            res.json({status:"exists"});
             }
         else{
     // SOL Query to Insert Student
@@ -98,9 +100,10 @@ app.post('/register', (req, res) => {
             }
             else{
                 console.log("Student inserted successfully",result);
+                res.json({status:"success"})
             }
         })
-       res.redirect('Provider-dashboard/provider_dashboard.html');
+    //    res.redirect('Provider-dashboard/provider_dashboard.html');
     // res.json({ message: responseMessage });
         }
         }
