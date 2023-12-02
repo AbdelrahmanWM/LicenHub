@@ -7,7 +7,17 @@
 //     aside.innerHTML=template;
 //     initializeAside();
 // });
-
+document.addEventListener('DOMContentLoaded', function () {
+    // Retrieve user information from the session
+    const user = JSON.parse(localStorage.getItem('user'));
+  
+    // Check if the user is authorized
+    if (!user || user.userType !== 'C') {
+        window.location.href = '../Login&Register/Login&Register.html'; // Redirect to the login page
+    }
+  
+    // ... rest of your code for the provider dashboard
+  });
 /**
  * "ASIDE template"
  * Here we inject the aside template into the aside of each subpage of the provider dashboard
@@ -44,7 +54,7 @@ let asideContent=`
     <span class="material-icons-sharp">settings</span>
     <p>Settings</p>
 </a>
-<a href="../index.html" class="aside">
+<a href="../index.html" class="aside" id='logout'>
     <span class="material-icons-sharp">logout</span>
     <p>Logout</p>
 </a>

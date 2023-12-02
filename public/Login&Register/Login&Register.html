@@ -48,11 +48,22 @@
             
         </form>
     </div>
+   <script src="../javaScript/updateTheme.js"></script>
 <script>
-    
+
+     let user=JSON.parse(localStorage.getItem('user'));
+    if(user)
+        if(user.userType=='P')
+        window.location.href = "../Provider-dashboard/provider_dashboard.html"; // Redirect to the provider page
+        else if(user.userType=='C')
+        window.location.href = "../Client-dashboard/client_dashboard.html"; // Redirect to the provider page
+
 document.getElementById("login-form").addEventListener("submit", async function (event) {
     //console.log("Form submitted"); 
     event.preventDefault();
+   
+
+           
     // preventDefault();
     const userType = document.querySelector('input[name="user-type"]:checked');
     const email = document.getElementById("email-input").value;
@@ -93,8 +104,9 @@ document.getElementById("login-form").addEventListener("submit", async function 
         } catch (error) {
          console.error('Error fetching data:', error);
          }
-    
+      
     })
+
  </script>
     <!-- <script> -->
            
@@ -124,7 +136,7 @@ document.getElementById("login-form").addEventListener("submit", async function 
 // });
            
     // </script> -->
-    <script src="../javaScript/main.js"></script>
+    <!-- <script src="../javaScript/main.js"></script> -->
 
 
 

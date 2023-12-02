@@ -63,6 +63,11 @@ let menu=document.getElementById("menu");
 let close=document.getElementById("close");
 let aside=document.querySelector("aside");
 
+let logout=document.getElementById('logout');
+
+logout.onclick=function(){
+    localStorage.removeItem('user');
+}
 menu.onclick=function(){
     aside.classList.add("visible");
 }
@@ -71,6 +76,7 @@ close.onclick = function(){
     aside.classList.remove("visible");
 }
 //--------------------------------------------------------------
+
 /**
- * For the Login&Registration form
+ * For the provider_account.html  form
  */

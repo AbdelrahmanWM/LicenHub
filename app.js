@@ -1,4 +1,5 @@
 const express = require('express');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const path=require('path');
 const app = express();
@@ -12,22 +13,19 @@ app.use(bodyParser.json());
 
 app.use(express.static('public'));
 
-
+app.use(session({
+    secret: 'GWIEIS$@322DD452SD332',
+    resave: false,
+    saveUninitialized: true
+  }));
 app.listen(port, () => {
   console.log("Listening at port: " + port);
 });
 
 app.get('/',(req,res)=>{
     res.sendFile(__dirname+'/index.html');
-// res.sendFile(__dirname+'/public/Login&Register/Register.html');
+})
 
-})
-app.get('/home',(req,res)=>{
-   
-})
-// app.get('/css/main.css', (req, res) => {
-//     res.sendFile(__dirname + '/css/main.css');
-//   });
 app.post('/login',(req,res)=>{
     const email=req.body.email;
     const password=req.body.password;
@@ -45,6 +43,7 @@ app.post('/login',(req,res)=>{
             res.json({userType:"W"});
             }
             else{
+               
                 res.json({userType:result[0].userType,user:result[0]});
             }
         })
@@ -62,16 +61,6 @@ app.post('/register', (req, res) => {
     const password = req.body.password;
     const userType = req.body.userType;
 
-    
-    // Handle registration logic here
-    // For demonstration purposes, just send a response with the form data
-    // const responseMessage = `Registration successful!\n
-    //   User Type: ${userType}\n
-    //   First Name: ${firstName}\n
-    //   Last Name: ${lastName}\n
-    //   Email: ${email}\n
-    //   Password: ${password}`;
-  
     // Send a response
     const StudentData={ 
         userType,firstName,lastName,email,password
@@ -91,8 +80,6 @@ app.post('/register', (req, res) => {
         else{
     // SOL Query to Insert Student
     const insertQuery='INSERT INTO users set ?';
-
-   
         // Insert Student
         db.query(insertQuery,StudentData,(error,result)=>{
             if(error){
@@ -103,26 +90,72 @@ app.post('/register', (req, res) => {
                 res.json({status:"success"})
             }
         })
-    //    res.redirect('Provider-dashboard/provider_dashboard.html');
-    // res.json({ message: responseMessage });
+
         }
         }
     })
-// res.end();
 
   });
-// Now you can use the 'db' object for your database operations
-// For example:
-// db.query('SELECT * FROM your_table', (err, results) => {
-//   if (err) {
-//     console.error("Error executing query:", err);
-//     return;
-//   }
-//   console.log("Query results:", results);
-// });
+app.get('/providerTable',(req,res)=>{
+    console.log("Welcome");
+    const id=req.query.id;
 
-/**
- * Here we handle the light/dark mode
- */
+    let selectQuery=`SELECT * FROM provider WHERE id = '${id}'`;
+    db.query(selectQuery,(error,response)=>{
+        if(error)console.log(error);
+        else{
+            console.log(response[0]);
+            res.json({response:response[0]});
+      
+        }
+    })
+})
+app.post('/providerAccountInformation',(req,res)=>{
+    const id=req.body.id;
+    const accountForm=req.body.accountForm;
+    const email=req.body.email;
+    const firstName=req.body.firstName;
+    const lastName=req.body.lastName;
+    const address=req.body.address;
+    const postcode=req.body.postcode;
+    const city=req.body.city;
+    const country=req.body.country;
+    const company=req.body.company;
+    const website=req.body.website;
+    const user={
+        id,address,postcode,city,country,company,website
+    }
+    let selectQuery=`SELECT * FROM provider WHERE id = '${id}'`;
+    db.query(selectQuery,(error,response)=>{
+        if(response.length>0){
+            let updateQuery = `
+            UPDATE provider
+            SET 
+                address='${address}',
+                postcode='${postcode}',
+                city='${city}',
+                country='${country}',
+                company='${company}',
+                website='${website}'
+            WHERE id='${id}';
+        `;
+        
+            db.query(updateQuery,(error,response)=>{
+                if(error)console.log(error);
 
-
+            })
+        }
+        else {
+            let additionQuery='INSERT INTO provider set ?';
+            db.query(additionQuery,user,(error,result)=>{
+                if(error){
+                    console.log("Error adding provider data:",error);
+                }
+                else{
+                    console.log("provider data inserted successfully",result);
+                }
+            })
+        }
+       
+    })
+})

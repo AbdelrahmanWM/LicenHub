@@ -65,7 +65,14 @@
     </div>
     
     <!--Script -->
+    <script src="../javaScript/updateTheme.js"></script>
     <script>
+         let user=JSON.parse(localStorage.getItem('user'));
+    if(user)
+        if(user.userType=='P')
+        window.location.href = "../Provider-dashboard/provider_dashboard.html"; // Redirect to the provider page
+        else if(user.userType=='C')
+        window.location.href = "../Client-dashboard/client_dashboard.html"; // Redirect to the provider page
         document.getElementById("register-form").addEventListener('submit',async function(event) {
             event.preventDefault();
             const password = document.querySelector('input[name="password"]').value;
