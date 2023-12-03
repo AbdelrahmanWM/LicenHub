@@ -939,6 +939,9 @@ main.p_notifications .notifications .notification .time{
     background-color: rgb(246, 246, 249);
 
 }
+
+/*----------------------------------------------------------------------*/
+/* Css content for client_notifications.html */
 .client-notification-table {
     width: 80%;
     margin: 20px auto;
@@ -987,3 +990,53 @@ main.p_notifications .notifications .notification .time{
    font-weight: bold;
 }
 
+/*----------------------------------------------------------------------*/
+/* Css content for client_account.html */
+
+main.c_account .information {
+    /* background-color: var(--color-white); */
+    display:grid;
+    width:100%;
+    grid-template-columns: auto-fill;
+    grid-gap:10px;
+    margin-top:2rem;
+   
+}
+
+main.c_account .information .info{
+    display:flex;
+    justify-content: space-between;
+    background-color: var(--color-white);
+    padding:0.8rem;
+    border-radius:var(--border-raduis-1);
+    border:var(--border-transparent);
+    
+}
+main.c_account .info:hover {
+    border:var(--border-hovering);
+}
+main.c_account .info input,main.p_account .info select {
+    padding:0.4rem;
+    color:var(--color-dark);
+    background-color:var(--color-body);
+    border-radius: var(--border-raduis-1);
+    width:75%;
+    border:var(--border-transparent);
+}
+
+main.c_account .info input:focus{
+   border:var(--border-hovering);
+}
+
+main.c_account .info input:focus main.p_account .info{
+    border:var(--border-transparent);
+}
+main.c_account .info.submit{
+    width:fit-content;
+}
+main.c_account .info.submit input {
+    width:fit-content;
+    background-color: transparent;
+    font-weight: 700;
+    /* color:var(--color-primary) */
+}
