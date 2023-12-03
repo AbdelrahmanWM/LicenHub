@@ -128,10 +128,7 @@ main h1:hover {
     color:var(--color-primary);
 }
 /* .right */
-.right {
-    /* display:grid;
-    grid:2rem; */
-}
+
 .right .top{
     display:flex;
     justify-content:flex-end;
@@ -714,9 +711,7 @@ opacity: 70%;
 border-radius:50%;
 }
 
-main.p_notifications .notifications .notification .time{
 
-}
 
 /********************/
 
