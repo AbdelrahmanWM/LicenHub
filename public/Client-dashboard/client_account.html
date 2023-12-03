@@ -32,9 +32,9 @@
         <aside >
             <!--  aside template generated here -->
         </aside>
-        <main>
+       <main class="c_account">
         <h1>Account Information</h1>
-        <div class="information">
+        <form class="information" method="post" id="accountInformation_form">
           <div class="info">
             <label for="email">E-mail *</label>
             <input type="email" name="email" id="email" required>
@@ -85,7 +85,18 @@
               <option value="Enabled" selected>Enabled</option>
             </select>
           </div>
-        </div>
+          
+          <div class="info submit">
+            <input type="submit" value="Save changes" />
+          </div>
+          <div class="info">
+            <label for="Password"
+              >Password
+              <span class="dangerous clickable">&lpar;change&rpar;</span></label
+            >
+            <input type="url" name="website" id="website" />
+          </div>
+        </form>
         </main>
         <div class="right">
 
