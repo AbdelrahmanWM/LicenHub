@@ -1001,6 +1001,7 @@ main.p_notifications .notifications .notification .time{
 
 }
 
+
 /*----------------------------------------------------------------------*/
 /* Css content for client_notifications.html */
 .client-notification-table {
@@ -1076,7 +1077,7 @@ main.c_account .information .info{
 main.c_account .info:hover {
     border:var(--border-hovering);
 }
-main.c_account .info input,main.p_account .info select {
+main.c_account .info input,main.c_account .info select {
     padding:0.4rem;
     color:var(--color-dark);
     background-color:var(--color-body);
@@ -1089,107 +1090,7 @@ main.c_account .info input:focus{
    border:var(--border-hovering);
 }
 
-main.c_account .info input:focus main.p_account .info{
-    border:var(--border-transparent);
-}
-main.c_account .info.submit{
-    width:fit-content;
-}
-main.c_account .info.submit input {
-    width:fit-content;
-    background-color: transparent;
-    font-weight: 700;
-    /* color:var(--color-primary) */
-}
-/*----------------------------------------------------------------------*/
-/* Css content for client_notifications.html */
-.client-notification-table {
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    text-align: center;
-    transition: 0.25s;
-  }
-
-  .client-notification-table th, .client-notification-table td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    transition: 0.25s;
-  }
-
-  .client-notification-table th {
-    background-color: #f0f0f0;
-    font-weight: bold;
-    color: var(--color-dark);  
-}
-
-  .client-notification-table tr:hover {
-    background-color: #f5f5f5fd;
-  }
-
-  .client-notification-table:hover {
-    outline: 1px solid var(--color-primary); 
-  }
-
-
-  .client-notification-table .unread {
-    color: var(--color-dangerous);
-    font-weight: bold;
-  }
-
-  .client-notification-table .read {
-    color: var(--color-success);
-    font-weight: bold;
-  }
-
-.notification-name{
-   color: var(--color-dark);
-   font-weight: bold;
-}
-
-/*----------------------------------------------------------------------*/
-/* Css content for client_account.html */
-
-main.c_account .information {
-    /* background-color: var(--color-white); */
-    display:grid;
-    width:100%;
-    grid-template-columns: auto-fill;
-    grid-gap:10px;
-    margin-top:2rem;
-   
-}
-
-main.c_account .information .info{
-    display:flex;
-    justify-content: space-between;
-    background-color: var(--color-white);
-    padding:0.8rem;
-    border-radius:var(--border-raduis-1);
-    border:var(--border-transparent);
-    
-}
-main.c_account .info:hover {
-    border:var(--border-hovering);
-}
-main.c_account .info input,main.p_account .info select {
-    padding:0.4rem;
-    color:var(--color-dark);
-    background-color:var(--color-body);
-    border-radius: var(--border-raduis-1);
-    width:75%;
-    border:var(--border-transparent);
-}
-
-main.c_account .info input:focus{
-   border:var(--border-hovering);
-}
-
-main.c_account .info input:focus main.p_account .info{
+main.c_account .info input:focus main.c_account .info{
     border:var(--border-transparent);
 }
 main.c_account .info.submit{
