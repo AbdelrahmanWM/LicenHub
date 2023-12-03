@@ -65,12 +65,39 @@ let aside=document.querySelector("aside");
 
 let logout=document.getElementById('logout');
 
-logout.onclick=function(){
+// logout.onclick=async function(){
+//     try{
+//         let response=await fetch('/logout');
+//         let data=await response.json();
+//         console.log(data.message);
+//     }catch(err){console.log(err);}
+//     localStorage.removeItem('user');
+// }
+// menu.onclick=function(){
+//     aside.classList.add("visible");
+// }
+logout.onclick = async function (event) {
+    // window.alert("logged out");
+    event.preventDefault(); 
+    try {
+      let response = await fetch('/logout');
+      let data = await response.json();
+      console.log(data);
+  
+      // Redirect to the homepage after successful logout
+      if (response.ok) {
+        // window.alert(data);
+        window.alert("successfully logged out.");
+        window.location.href = '/';
+      }
+    } catch (err) {
+      console.error(err);
+      window.alert("Error logging out");
+    }
     localStorage.removeItem('user');
-}
-menu.onclick=function(){
-    aside.classList.add("visible");
-}
+  };
+  
+
 
 close.onclick = function(){
     aside.classList.remove("visible");

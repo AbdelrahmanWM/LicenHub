@@ -526,6 +526,10 @@ main.p_customers .info .details{
     display:flex;
     justify-content: space-between;
 }
+main.p_customers .customersInfo{
+    display:flex;
+    flex-direction:column;
+}
 main.p_customers .customersInfo .filters {
     display:flex;
     justify-content: space-between;
@@ -593,14 +597,71 @@ main.p_customers .customersInfo table tr{
     width:90%;
 }
 main.p_customers .customersInfo table td:hover{
-    font-weight:600;
+    color:var(--color-primary);
 }
 main.p_customers .customersInfo table td{
    
     color:var(--color-link);
     text-align: center;
 }
+main.p_customers .customersInfo table td span{
+    display: block;
+    width:fit-content;
+    margin-left:auto;
+    margin-right: auto;
+    padding:0.2rem;
+    border-radius: var(--border-raduis-1);
+    
+    border:var(--border-transparent);
+ }
+ main.p_customers .customersInfo table td span:hover{
 
+    border:var(--border-hovering);
+ }
+/* main.p_customers .customersInfo table td #notify:hover{
+   color:var(--color-success);
+} */
+main.p_customers .customersInfo .form{
+    margin-top:0.5rem;
+    /* background-color: var(--color-white); */
+    /* width:fit-content; */
+    /* border-radius: var(--border-raduis-1); */
+
+}
+main.p_customers .customersInfo form{
+    display:none;
+}
+main.p_customers .customersInfo form input{
+    background-color: var(--color-white);
+    color:var(--color-dark);
+    padding:0.5rem;
+    border-radius: var(--border-raduis-1);
+
+}
+main.p_customers .customersInfo .form input[type="submit"]{
+color:var(--color-primary);
+border:var(--border-transparent);
+font-weight:600;
+
+}
+main.p_customers .customersInfo .form input[type="submit"]:hover{
+   
+    border:var(--border-hovering);
+    
+    }
+main.p_customers .customersInfo #addCustomer{
+    background-color: var(--color-white);
+    color:var(--color-dark);
+    padding:0.6rem;
+    align-self: center;
+    border-radius: var(--border-raduis-1);
+    border:var(--border-transparent);
+    transition:var(--transition-duration);
+    margin-top:0.5rem;
+}
+main.p_customers .customersInfo #addCustomer:hover{
+    border:var(--border-hovering);
+}
 @media screen and (max-width:1200px){
     main.p_customers .customersInfo table td:nth-child(3),
     main.p_customers .customersInfo table td:nth-child(4),

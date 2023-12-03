@@ -43,7 +43,9 @@ app.post('/login',(req,res)=>{
             res.json({userType:"W"});
             }
             else{
-               
+                // console.log(result[0].id);
+                 req.session.user=result[0].id;
+                 console.log(req.session.user);
                 res.json({userType:result[0].userType,user:result[0]});
             }
         })
@@ -52,6 +54,17 @@ app.post('/login',(req,res)=>{
     
    
 })
+app.get('/logout', (req, res) => {
+    req.session.destroy(err => {
+      if (err) {
+        console.error('Error destroying session:', err);
+        res.status(500).json({ error: 'Internal Server Error' });
+      } else {
+        res.json({ message: 'Session destroyed!' });
+      }
+    });
+  });
+  
 app.post('/register', (req, res) => {
     
     // Access form data using req.body
@@ -66,7 +79,7 @@ app.post('/register', (req, res) => {
         userType,firstName,lastName,email,password
     }
     console.log(StudentData);
-    const selectQuery=`SELECT * FROM users WHERE firstname = '${firstName}' AND lastname = '${lastName}' AND email = '${email}'`;
+    const selectQuery=`SELECT * FROM users WHERE email = '${email}'`;
     ;
     db.query(selectQuery,(error,result)=>{
         if(error){
@@ -97,20 +110,22 @@ app.post('/register', (req, res) => {
 
   });
 app.get('/providerTable',(req,res)=>{
-    console.log("Welcome");
-    const id=req.query.id;
-
+    // console.log("Welcome");
+    const id=req.session.user|req.query.id;
+    // const id=req.session.user;
+    //  console.log(id);
     let selectQuery=`SELECT * FROM provider WHERE id = '${id}'`;
     db.query(selectQuery,(error,response)=>{
         if(error)console.log(error);
         else{
-            console.log(response[0]);
+            // console.log(response[0]);
             res.json({response:response[0]});
       
         }
     })
 })
 app.post('/providerAccountInformation',(req,res)=>{
+    console.log("updating account..");
     const id=req.body.id;
     const accountForm=req.body.accountForm;
     const email=req.body.email;
@@ -159,3 +174,88 @@ app.post('/providerAccountInformation',(req,res)=>{
        
     })
 })
+
+app.post('/addCustomer', (req, res) => {
+    const id = req.session.user || req.body.id;
+    console.log(id);
+    const name = req.body.name;
+    const email = req.body.email;
+    const serialNumber = req.body.serialNumber;
+    const status = 'Active';
+    const subscription = 'Active';
+    const info = 'No info';
+    const query=`SELECT * FROM customers WHERE email = '${email}' And name = '${name}'`;
+        db.query(query,(error,result)=>{
+            if(result.length>0){
+    
+            res.json({message:"X"});
+            }
+            else{
+                const query=`SELECT * FROM customers WHERE serial_numbers = '${serialNumber}'`;
+                db.query(query,(error,result)=>{
+                    if(result.length>0){
+                
+                    res.json({message:"R"});
+                    }
+                    else{
+                db.query(
+                    'INSERT INTO customers (id, name, email, status, creation_date, subscription, info, serial_numbers) VALUES (?, ?, ?, ?, CURRENT_DATE, ?, ?, ?)',
+                    [id, name, email, status, subscription, info, serialNumber],
+                    (error, result) => {
+                      if (error) {
+                        console.error('Error adding customer:', error);
+                        res.status(500).json({ error: 'Internal Server Error' });
+                        res.json({message:"X"});
+                      } else {
+                        console.log('New customer added:', result);
+                        res.json({ message: 'Customer added successfully' });
+                      }
+                    }
+                  );
+               
+                }
+            });
+            }
+        
+  });
+
+});
+
+app.get('/customers', async (req, res) => {
+    try {
+      const customerId = req.session.user || req.query.id;
+      console.log(customerId);
+      const selectQuery = 'SELECT * FROM customers WHERE id = ?';
+  
+      db.query(selectQuery, [customerId], (error, results) => {
+        if (error) {
+          console.error(error);
+          res.status(500).json({ error: 'Internal Server Error' });
+        } else {
+          if (results.length > 0) {
+            res.json({ data: results });
+          } else {
+            res.status(404).json({ error: 'Customer not found' });
+          }
+        }
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
+  app.get('/deleteCustomer',(req,res)=>{
+    let email=req.query.email;
+    let deleteQuery=`DELETE FROM customers WHERE email = '${email}'`;
+    db.query(deleteQuery,(error,result)=>{
+        if (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+          } 
+          else{
+            console.log("Successfully deleted.");
+          }
+         
+    })
+  })

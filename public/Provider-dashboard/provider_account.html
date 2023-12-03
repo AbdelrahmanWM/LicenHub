@@ -74,7 +74,7 @@
           </div>
 
           <div class="info submit">
-            <input type="submit" value="Save changes" />
+            <input type="submit" id="submit" value="Save changes" />
           </div>
           <div class="info">
             <label for="Password"
@@ -90,6 +90,8 @@
  
     <script >
 
+           
+    
       let user = JSON.parse(localStorage.getItem("user"));
       let accountForm = document.getElementById("accountInformation_form");
       let email = document.getElementById("AIemail");
@@ -102,11 +104,19 @@
       let company = document.getElementById("AIcompany");
       let website = document.getElementById("AIwebsite");
 
-  
+      let submit=document.getElementById('submit');
+ 
+      window.addEventListener('load',async function(){
+        if(email.value==='')
+      submit.click();
+      })
       document.addEventListener("DOMContentLoaded", async function () {
     
         let user = JSON.parse(localStorage.getItem("user"));
-        if (user.userType == "P") {
+        if (typeof user === 'undefined') {
+             accountForm.submit();
+           }
+        else if (user.userType == "P") {
           const url = `/providerTable?id=${user.id}`;
           let response = await fetch(url, {
             method: "GET",
