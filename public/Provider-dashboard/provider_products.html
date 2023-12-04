@@ -33,16 +33,154 @@
         <aside>
      <!--  aside template generated here -->
         </aside>
-        <main>
+        <main class="p_products">
         <h1>Products</h1>
+      <div class="products" id="products">
+ 
+        <div class="product">
+          <div class="product-info">
+            <div class="top"><h2>DataDash</h2><span class="delete">delete</span></div>
+            <p>DataDash is your ultimate data analytics platform, providing powerful insights and visualizations for your business. Subscribe annually to unlock a world of data-driven decision-making.</p>
+            <p>Price: <span class="success">$149.99</span> per year</p>
+            <p>Rating: <span class="warning">★★★★★</span></p>
+            <p>Availability: Available Now</p>
+            <p>Brand: <span class="dangerous">DataDash Analytics</span></p>
+            <p>Category: Software as a Service (SaaS)</p>
+           
+          </div>
+        </div>
+       
+
+      </div>
+
+      <div class="product add" id="addProduct" onclick="addProduct()"><span class="plus" id="plus">+</span> 
+        <div class="form">
+        <form id="productForm">
+          <input type="text" name="name" placeholder="product name" required>
+          <input type="price" name="price" placeholder="price" required>
+          <input type="brand" name="brand" placeholder="brand" required>
+          <textarea name="info" id="info"  cols="30" rows="10">Product info</textarea>
+          <input type="submit" id="productFormSubmit" value="add new product">
+        </form>
+      </div></div>
+  
         </main>
         <div class="right">
 
         </div>
     </div>
-
     <script src="../javaScript/Provider_dashboard_templates.js"></script>
     <script src="../javaScript/main.js"></script>
+<script>
+let addnewProductButton=document.getElementById("addProduct");
+let productForm=document.getElementById("productForm");
+// addnewProductButton.onclick=function(){
+//   document.getElementById("plus").style.display='none';
+//   productForm.style.display='flex';
+// }
+function addProduct(){
+  let productForm=document.getElementById("productForm");
+
+  document.getElementById("plus").style.display='none';
+  productForm.style.display='flex';
+}
+async function refreshProducts(){
+  const productsList=document.getElementById("products");
+  productsList.innerHTML="";
+  // productsList.appendChild(  `<div class="product add"><span>+</span></div>`);
+  // products.innerHTML="";
+  try{
+    const tableData = await fetch(`/products?id=${JSON.parse(localStorage.getItem('user')).id}`);
+    const products = await tableData.json();
+
+    
+    for (let i = 0; i < products.data.length; i++) {
+      const row = document.createElement('div');
+      row.classList.add("product");
+  
+      
+      row.innerHTML = `
+ 
+        <div class="product-info">
+          <div class="top"><h2>${products.data[i].name}</h2><span class="delete" id="delete" onclick='deleteProduct(this)'>delete</span></div>
+          <p>${products.data[i].info}</p>
+          <p>Price: <span class="success">$${products.data[i].price}</span> per year</p>
+          <p>Rating: <span class="warning">★★★★★</span></p>
+          <p>Availability: Available Now</p>
+          <p>Brand: <span class="dangerous">${products.data[i].brand}</span></p>
+          <p>Category: Software as a Service (SaaS)</p>
+         
+        </div>
+      </div>
+    
+     `
+      let firstChild=productsList.firstChild;
+      productsList.insertBefore(row,firstChild);
+    }
+    
+    productsList.appendChild(  `<div class="product add"><span>+</span></div>`);
+
+  } catch (error) {
+    console.error('Error fetching customer data:', error);
+  }
+}
+
+
+productForm.addEventListener("submit", async function (event) {
+  const name=document.querySelector('#productForm input[name="name"]').value;
+  const price=document.querySelector('#productForm input[name="price"]').value;
+  const brand=document.querySelector('#productForm input[name="brand"]').value;
+  const info=document.querySelector('#productForm textarea').value;
+  const id=JSON.parse(localStorage.getItem('user')).id;
+  console.log(name);
+  console.log(price);
+  console.log(brand);
+  event.preventDefault();
+  try{
+    const response=await fetch('/addProduct',{
+        method:"POST",
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body:JSON.stringify({id:id,name:name,price:price,brand:brand,info:info})
+        }
+        );
+        if(response.ok){
+          let data=await response.json();
+
+          document.getElementById("plus").style.display='block';
+          productForm.style.display='none';
+          
+          
+          refreshProducts();
+        }
+}catch(err){
+  console.err(err);
+}
+});
+
+async function deleteProduct(spanElement) {
+  spanElement.style.color = 'green';
+
+  // Get the product info container
+  const productInfo = spanElement.closest('.product-info');
+
+  // Get the product name from the h2 inside the product info container
+  const name = productInfo.querySelector('h2').textContent.trim();
+
+  console.log(name);
+
+
+      const response = fetch(`/deleteProduct?name=${name}`);
+      
+     
+          // Refresh your products here, assuming refreshProducts() is defined
+          response.then(refreshProducts());
+   
+}
+
+</script>
+ 
 
 </body>
 </html>

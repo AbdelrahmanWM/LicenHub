@@ -50,10 +50,7 @@ let asideContent=`
     <span class="material-icons-sharp">notifications</span>
     <p>Notifications</p>
 </a>
-<a href="client_settings.html" class="aside">
-    <span class="material-icons-sharp">settings</span>
-    <p>Settings</p>
-</a>
+
 <a href="../index.html" class="aside" id='logout'>
     <span class="material-icons-sharp">logout</span>
     <p>Logout</p>

@@ -180,76 +180,12 @@ let rightContent=`
 `;
 
 document.querySelector('.right').innerHTML=rightContent;
-
-/*  
-Adding customers to provider_customers.html table 
-*/
-async function refreshTableContents(){
-    const table = document.querySelector('table.customers tbody');
-    // Clear existing rows in the table
-    table.innerHTML = "";
-  
-    try {
-      const tableData = await fetch(`/customers?id=${JSON.parse(localStorage.getItem('user')).id}`);
-      const customers = await tableData.json();
-  
-      for (let i = 0; i < customers.data.length; i++) {
-        const row = document.createElement('tr');
-        
-        row.innerHTML = `
-          <td><b>${customers.data[i].name}</b></td>
-          <td>${customers.data[i].email}</td>
-          <td class="success">${customers.data[i].status}</td>
-          <td>${customers.data[i].creation_date.substring(0,10)}</td>
-          <td class="success">${customers.data[i].subscription}</td>
-          <td>${customers.data[i].serial_numbers}</td>
-          <td>
-            <span class="primary">Edit</span>
-            <span class="dangerous" onclick="deleteCustomer(this)">Delete</span>
-            <span id="notify" class="warning" onclick="openEmail(this)">Notify</span>
-          </td>
-        `;
-  
-        table.appendChild(row);
-      }
-    } catch (error) {
-      console.error('Error fetching customer data:', error);
-    }
-  
-}
 document.addEventListener('DOMContentLoaded', async function () {
-refreshTableContents();
-});
-// Notify span 
-function openEmail(spanElement) {
-  // Get the parent row (tr)
-  const row = spanElement.closest('tr');
+  refreshTableContents();
+  refreshProducts();
+  });
 
-  // Get the email from the second cell (td) in the same row
-  const email = row.cells[1].textContent.trim();
-
-  // Construct the mailto link
-  const mailtoLink = `mailto:${email}`;
-
-  // Open the default email client
-  window.location.href = mailtoLink;
-}
-// Delete Span
- function deleteCustomer(spanElement){
-  const row = spanElement.closest('tr');
-
-  // Get the email from the second cell (td) in the same row
-  const email = row.cells[1].textContent.trim();
-
-  const response= fetch(`/deleteCustomer?email=${email}`);
-//  if(response.ok) {window.alert("Deleted");  refreshTableContents();}
-//  else{
-//   window.alert("problme");
-//  }
- response.then(refreshTableContents());
-}
-/**************************************** */
-// adding a new customer
+  // adding a new customer
 let addNewCustomerButton=document.getElementById("addCustomer");
 addNewCustomerButton.onclick=function(event){
 addNewCustomerForm.style.display='block';
@@ -292,4 +228,83 @@ addNewCustomerForm.addEventListener("submit", async function (event) {
   console.err(err);
 }
 });
+
+
+  function deleteCustomer(spanElement){
+    const row = spanElement.closest('tr');
+  
+    // Get the email from the second cell (td) in the same row
+    const email = row.cells[1].textContent.trim();
+  
+    const response= fetch(`/deleteCustomer?email=${email}`);
+  //  if(response.ok) {window.alert("Deleted");  refreshTableContents();}
+  //  else{
+  //   window.alert("problme");
+  //  }
+   response.then(refreshTableContents());
+  }
+/*  
+Adding products to provider_products.html table 
+*/
+
+/*  
+Adding customers to provider_customers.html table 
+*/
+async function refreshTableContents(){
+    const table = document.querySelector('table.customers tbody');
+    // Clear existing rows in the table
+    table.innerHTML = "";
+  
+    try {
+      const tableData = await fetch(`/customers?id=${JSON.parse(localStorage.getItem('user')).id}`);
+      const customers = await tableData.json();
+  
+      for (let i = 0; i < customers.data.length; i++) {
+        const row = document.createElement('tr');
+        
+        row.innerHTML = `
+          <td><b>${customers.data[i].name}</b></td>
+          <td>${customers.data[i].email}</td>
+          <td class="success">${customers.data[i].status}</td>
+          <td>${customers.data[i].creation_date.substring(0,10)}</td>
+          <td class="success">${customers.data[i].subscription}</td>
+          <td>${customers.data[i].serial_numbers}</td>
+          <td>
+            <span class="primary">Edit</span>
+            <span class="dangerous" onclick="deleteCustomer(this)">Delete</span>
+            <span id="notify" class="warning" onclick="openEmail(this)">Notify</span>
+          </td>
+        `;
+  
+        table.appendChild(row);
+      }
+      document.getElementById("numofcustomers").innerText=customers.data.length;
+
+    } catch (error) {
+      console.error('Error fetching customer data:', error);
+    }
+  
+}
+
+
+//////////////////////////
+
+// Notify span 
+function openEmail(spanElement) {
+  // Get the parent row (tr)
+  const row = spanElement.closest('tr');
+
+  // Get the email from the second cell (td) in the same row
+  const email = row.cells[1].textContent.trim();
+
+  // Construct the mailto link
+  const mailtoLink = `mailto:${email}`;
+
+  // Open the default email client
+  window.location.href = mailtoLink;
+}
+// Delete Span
+
+/**************************************** */
+
 

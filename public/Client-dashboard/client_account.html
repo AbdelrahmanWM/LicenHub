@@ -34,61 +34,49 @@
         </aside>
        <main class="c_account">
         <h1>Account Information</h1>
-        <form class="information" method="post" id="accountInformation_form">
+        <form class="information" method="post" id="accountInformation_formc">
           <div class="info">
             <label for="email">E-mail *</label>
-            <input type="email" name="email" id="email" required>
+            <input type="email" name="email" id="AIemailc" disabled/>
           </div>
           <div class="info">
             <label for="firstname">First Name *</label>
-            <input type="text" name="firstname" id="firstname" required>
+            <input type="text" name="firstname" id="AIfirstnamec" />
           </div>
           <div class="info">
             <label for="lastname">Last Name *</label>
-            <input type="text" name="lastname" id="lastname" required>
+            <input type="text" name="lastname" id="AIlastnamec" />
           </div>
           <div class="info">
             <label for="address">Address *</label>
-            <input type="text" name="address" id="address" required>
+            <input type="text" name="address" id="AIaddressc" />
           </div>
           <div class="info">
             <label for="postcode">Postcode *</label>
-            <input type="text" name="postcode" id="postcode" required>
+            <input type="text" name="postcode" id="AIpostcodec" />
           </div>
           <div class="info">
             <label for="city">City *</label>
-            <input type="text" name="city" id="city" required>
+            <input type="text" name="city" id="AIcityc" />
           </div>
           <div class="info">
             <label for="country">Country *</label>
-            <input type="text" name="country" id="country" required>
+            <input type="text" name="country" id="AIcountryc" />
           </div>
           <div class="info">
             <label for="company">Company</label>
-            <input type="text" name="company" id="company" >
+            <input type="text" name="company" id="AIcompanyc" />
           </div>
           <div class="info">
             <label for="website">Website</label>
-            <input type="url" name="website" id="website" >
+            <input type="url" name="website" id="AIwebsitec" />
           </div>
-          <div class="info">
-            <label for="servicenotification">Service Notifications</label>
-            <select name="servicenotification" id="servicenotification">
-              <option value="Disabled">Disabled</option>
-              <option value="Enabled" selected>Enabled &lpar;recommended&rpar;</option>
-            </select>
-          </div>
-          <div class="info">
-            <label for="emailinvoices">Receive Email Invoices</label>
-            <select name="emailinvoices" id="emailinvoices">
-              <option value="Disabled">Disabled</option>
-              <option value="Enabled" selected>Enabled</option>
-            </select>
-          </div>
-          
+
           <div class="info submit">
-            <input type="submit" value="Save changes" />
+            <input type="submit" id="submitc" value="Save changes" />
+       
           </div>
+         
           <div class="info">
             <label for="Password"
               >Password
@@ -103,6 +91,100 @@
 
         </div>
     </div>
+    <script>
+          let user = JSON.parse(localStorage.getItem("user"));
+      let accountForm = document.getElementById("accountInformation_formc");
+      let email = document.getElementById("AIemailc");
+      let firstName = document.getElementById("AIfirstnamec");
+      let lastName = document.getElementById("AIlastnamec");
+      let address = document.getElementById("AIaddressc");
+      let postcode = document.getElementById("AIpostcodec");
+      let city = document.getElementById("AIcityc");
+      let country = document.getElementById("AIcountryc");
+      let company = document.getElementById("AIcompanyc");
+      let website = document.getElementById("AIwebsitec");
+
+      let submit=document.getElementById('submitc');
+      
+      window.addEventListener('load',async function(){
+        if(email.value==='')
+      submit.click();
+      })
+      document.addEventListener("DOMContentLoaded", async function () {
+    
+        let user = JSON.parse(localStorage.getItem("user"));
+        if (typeof user === 'undefined') {
+             accountForm.submit();
+           }
+        else if (user.userType == "C") {
+          const url = `/providerTable?id=${user.id}`;
+          let response = await fetch(url, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          let data = await response.json();
+          // console.log(data);
+          user.address = data.response.address;
+          user.postcode = data.response.postcode;
+          user.city = data.response.city;
+          user.country = data.response.country;
+          user.company = data.response.company;
+          user.website = data.response.website;
+          // console.log(user);
+          localStorage.setItem("user", JSON.stringify(user));
+          email.value = user.email !== undefined ? user.email : "";
+          firstName.value = user.firstname !== undefined ? user.firstname : "";
+          lastName.value = user.lastname !== undefined ? user.lastname : "";
+          address.value = user.address !== undefined ? user.address : "";
+          postcode.value = user.postcode !== undefined ? user.postcode : "";
+          city.value = user.city !== undefined ? user.city : "";
+          country.value = user.country !== undefined ? user.country : "";
+          company.value = user.company !== undefined ? user.company : "";
+          website.value = user.website !== undefined ? user.website : "";
+        }
+      });
+
+      accountForm.addEventListener("submit", async function (event) {
+        // update(submit);
+        
+        event.preventDefault();
+        try {
+          const response = await fetch("/providerAccountInformation", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              id: user.id,
+              accountForm: accountForm.value,
+              email: email.value,
+              firstName: firstName.value,
+              lastName: lastName.value,
+              address: address.value,
+              postcode: postcode.value,
+              city: city.value,
+              country: country.value,
+              company: company.value,
+              website: website.value,
+            }),
+          });
+          console.log('Update function called');
+          // const result = await response.json();
+      
+
+      
+        
+ 
+          
+        } catch (error) {
+          console.log(error);
+        }
+      
+      });
+
+    </script>
     <script src="../javaScript/Client_dashboard-templates.js"></script>
     <script src="../javaScript/main.js"></script>
 

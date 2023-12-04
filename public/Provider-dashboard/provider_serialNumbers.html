@@ -33,8 +33,17 @@
         <aside>
               <!--  aside template generated here -->
         </aside>
-        <main>
+        <main class="p_serialNumbers">
         <h1>Serial Numbers</h1>
+        <div class="serialNumber">
+          <p>Generate a new serial number</p>
+         <div class="content">
+          <button id="generateSN" onclick="generateSN()">Generate</button>
+          <input type="text" name="serialNumber" id="serialNumber" readonly>
+          <button onclick="copyText()">Copy</button>
+         </div>
+         <p class="" id="message"></p>
+        </div>
         </main>
         <div class="right">
 

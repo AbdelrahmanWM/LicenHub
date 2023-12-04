@@ -75,7 +75,9 @@
 
           <div class="info submit">
             <input type="submit" id="submit" value="Save changes" />
+       
           </div>
+         
           <div class="info">
             <label for="Password"
               >Password
@@ -90,7 +92,11 @@
  
     <script >
 
-           
+function update(){
+          // submit.value="   Saved   ";
+          submit.classList.add("success");
+          setTimeout(()=>{submit.value="Save changes";submit.classList.remove("success")},800);
+           }
     
       let user = JSON.parse(localStorage.getItem("user"));
       let accountForm = document.getElementById("accountInformation_form");
@@ -105,7 +111,7 @@
       let website = document.getElementById("AIwebsite");
 
       let submit=document.getElementById('submit');
- 
+      
       window.addEventListener('load',async function(){
         if(email.value==='')
       submit.click();
@@ -147,6 +153,8 @@
       });
 
       accountForm.addEventListener("submit", async function (event) {
+        // update(submit);
+        
         event.preventDefault();
         try {
           const response = await fetch("/providerAccountInformation", {
@@ -168,10 +176,18 @@
               website: website.value,
             }),
           });
-          const result = await response.json();
+          console.log('Update function called');
+          // const result = await response.json();
+      
+
+      
+        
+ 
+          
         } catch (error) {
           console.log(error);
         }
+      
       });
     </script>
      

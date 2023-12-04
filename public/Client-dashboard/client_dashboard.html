@@ -43,7 +43,7 @@
               </div>
               <div class="details">
                <span><img src="" alt=""></span>
-               <span>5</span>
+               <span id="licenseNumber">5</span>
               </div>
             </div>
             <div class="c-recent-payments">
@@ -81,62 +81,59 @@
             <button class="save-changes-button">Save changes</button>
           </div>
            <table class="client-serialnum">
+          <thead>
             <tr>
               <th>Name</th>
               <th>Product serial number</th>
-              <th>Software name</th>
-              <th>Purchase date</th>
+              <th>Subscription price</th>
               <th>Expiry date</th>
             </tr>
-            <tr>
-              <td><input type="text" placeholder="Enter Name"></td>
-              <td><input type="text" placeholder="Enter product serial number"></td>
-              <td><input type="text" placeholder="Enter software name"></td>
-              <td><input type="text" placeholder="Enter purchase date"></td>
-              <td><input type="text" placeholder="Enter Expiry date"></td>
-            </tr>
-            <tr>
-              <td>Daniel Hevrin</td>
-              <td>SN76447</td>
-              <td>Abc License</td>
-              <td>2023-2-27</td>
-              <td>2024-2-27</td>
-            </tr>
-            <tr>
-              <td>Daniel Hevrin</td>
-              <td>SN66567</td>
-              <td>123 License</td>
-              <td>2023-10-11</td>
-              <td>2023-11-11</td>
-            </tr>
-            <tr>
-              <td>Daniel Hevrin</td>
-              <td>SN45321</td>
-              <td>456 License</td>
-              <td>2023-4-2</td>
-              <td>2023-10-2</td>
-            </tr>
-            <tr>
-              <td>Daniel Hevrin</td>
-              <td>SN76543</td>
-              <td>Abc License</td>
-              <td>2023-1-24</td>
-              <td>2024-1-24</td>
-            </tr>
-            <tr>
-              <td>Daniel Hevrin</td>
-              <td>SN76543</td>
-              <td>Hello License</td>
-              <td>2023-6-24</td>
-              <td>2023-7-24</td>
-            </tr>
+          </thead>
+            <tbody>
+
+            </tbody>
            </table>
         </main>
         <div class="right">
 
         </div>
     </div>
+<script>
+  document.addEventListener('DOMContentLoaded',function(){
+    refreshProducts();
+  })
+  let productsList=document.querySelector(".c-dashboard .client-serialnum tbody");
+  async function refreshProducts(){
 
+  productsList.innerHTML="";
+  // productsList.appendChild(  `<div class="product add"><span>+</span></div>`);
+  // products.innerHTML="";
+  try{
+    const tableData = await fetch(`/licenses?id=${JSON.parse(localStorage.getItem('user')).id}`);
+    const products = await tableData.json();
+
+    
+    for (let i = 0; i < products.data.length; i++) {
+      const row = document.createElement('tr');
+  
+      
+      row.innerHTML = `
+          <td>${products.data[i].name}</td>
+          <td>${products.data[i].serialNumber}</td>
+          <td>${products.data[0].price}</td>
+          <td>${products.data[0].date.substring(0,10)}</td>
+     `;
+ 
+      productsList.append(row);
+    }
+    document.getElementById("licenseNumber").innerText=products.data.length;
+
+  } catch (error) {
+    console.error('Error fetching customer data:', error);
+  }
+}
+
+</script>
     <script src="../javaScript/Client_dashboard-templates.js"></script>
     <script src="../javaScript/main.js"></script>
 

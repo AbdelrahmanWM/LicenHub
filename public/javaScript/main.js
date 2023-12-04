@@ -64,6 +64,7 @@ let close=document.getElementById("close");
 let aside=document.querySelector("aside");
 
 let logout=document.getElementById('logout');
+logout.style.width='fitContent';
 
 // logout.onclick=async function(){
 //     try{
@@ -107,3 +108,45 @@ close.onclick = function(){
 /**
  * For the provider_account.html  form
  */
+
+/**
+ * For the provider_serialNumber.html  form
+ */
+function generateSN(){
+    let input=document.getElementById("serialNumber");
+    // Generate a random 6-digit number
+    const randomNumber = Math.floor(100000 + Math.random() * 900000);
+
+    // Add "SN" to the beginning
+    const result = "SN" + randomNumber;
+
+    input.value=result;
+}
+
+function copyText() {
+    // Get the input element
+    const textInput = document.getElementById('serialNumber');
+    let message=document.querySelector(".p_serialNumbers #message");
+  
+    // Select the text in the input field
+    textInput.select();
+    textInput.setSelectionRange(0, 99999); // For mobile devices
+  
+    try {
+      // Attempt to use the Clipboard API
+      document.execCommand('copy');
+      message.classList.add("success");
+      
+
+      message.innerText="successfully Copied.";
+      setTimeout(()=>message.innerText="",1000);
+    } catch (err) {
+      // Fallback for browsers that do not support the Clipboard API
+      console.error('Unable to copy to clipboard:', err);
+    //   message.innerText="unable to copy";
+    //   message.classList.replace('success','danger');
+    }
+  
+    // Deselect the text
+    window.getSelection().removeAllRanges();
+  }

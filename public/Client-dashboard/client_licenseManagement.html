@@ -32,75 +32,151 @@
         <aside >
             <!--  aside template generated here -->
         </aside>
-        <main>
+        <main class="c_licenseManagement">
         <h1>License Management</h1>
-        <div class="search-sort">
-          <input class="license-search" type="text" placeholder="Search">
-          <select class="license-sortSelect" name="user-sort-option">
-            <option value="sort-by">Sort-by</option>
-            <option value="date-recent">Most Recent date</option>
-            <option value="date-recent">Oldest date</option>
-            <option value="license-name">License name</option>
-          </select>
-          <button class="save-changes-button">Save changes</button>
+        <div class="products" id="productsc">
+ 
+          <div class="product">
+            <div class="product-info">
+              <div class="top"><h2>DataDash</h2><span class="delete">delete</span></div>
+              <p>Serial Number: <span class="primary">SN332542</span></p>
+              <p>Subscription Price: <span class="success">$149.99</span> per year</p>
+              <p>Availability: Available Now</p>
+              <p>Expiry Date: <span class="dangerous">2023-12-5</span></p>
+             
+            </div>
+          </div>
+         
+  
         </div>
-         <table class="client-serialnum">
-          <tr>
-            <th>Name</th>
-            <th>Product serial number</th>
-            <th>Software name</th>
-            <th>Purchase date</th>
-            <th>Expiry date</th>
-          </tr>
-          <tr>
-            <td><input type="text" placeholder="Enter Name"></td>
-            <td><input type="text" placeholder="Enter product serial number"></td>
-            <td><input type="text" placeholder="Enter software name"></td>
-            <td><input type="text" placeholder="Enter purchase date"></td>
-            <td><input type="text" placeholder="Enter Expiry date"></td>
-          </tr>
-          <tr>
-            <td>Daniel Hevrin</td>
-            <td>SN76447</td>
-            <td>Abc License</td>
-            <td>2023-2-27</td>
-            <td>2024-2-27</td>
-          </tr>
-          <tr>
-            <td>Daniel Hevrin</td>
-            <td>SN66567</td>
-            <td>123 License</td>
-            <td>2023-10-11</td>
-            <td>2023-11-11</td>
-          </tr>
-          <tr>
-            <td>Daniel Hevrin</td>
-            <td>SN45321</td>
-            <td>456 License</td>
-            <td>2023-4-2</td>
-            <td>2023-10-2</td>
-          </tr>
-          <tr>
-            <td>Daniel Hevrin</td>
-            <td>SN76543</td>
-            <td>Abc License</td>
-            <td>2023-1-24</td>
-            <td>2024-1-24</td>
-          </tr>
-          <tr>
-            <td>Daniel Hevrin</td>
-            <td>SN76543</td>
-            <td>Hello License</td>
-            <td>2023-6-24</td>
-            <td>2023-7-24</td>
-          </tr>
-         </table>
+  
+        <div class="product add" id="addLicense" onclick="addProduct()"><span class="plus" id="plusc">+</span> 
+          <div class="form">
+          <form id="licenseForm">
+            <input type="text" name="name" placeholder="product name" required>
+            <input type="serialNumber" name="serialNumber" placeholder="serialNumber" required>
+            <input type="price" name="price" placeholder="price" required>
+          
+           <input type="text" name="date" placeholder="Expiry date: 2023-12-31" required>
+            <input type="submit" id="licenseFormSubmit" value="add new license">
+          </form>
+        </div></div>
+    
         </main>
         <div class="right">
 
         </div>
     </div>
+<script>
+  document.addEventListener('DOMContentLoaded',function(){
+    refreshProducts();
+  })
+  let addnewProductButton=document.getElementById("addLicense");
+let productForm=document.getElementById("licenseForm");
+// addnewProductButton.onclick=function(){
+//   document.getElementById("plus").style.display='none';
+//   productForm.style.display='flex';
+// }
+function addProduct(){
+  let productForm=document.getElementById("licenseForm");
 
+  document.getElementById("plusc").style.display='none';
+  productForm.style.display='flex';
+}
+async function refreshProducts(){
+  const productsList=document.getElementById("productsc");
+  productsList.innerHTML="";
+  // productsList.appendChild(  `<div class="product add"><span>+</span></div>`);
+  // products.innerHTML="";
+  try{
+    const tableData = await fetch(`/licenses?id=${JSON.parse(localStorage.getItem('user')).id}`);
+    const products = await tableData.json();
+
+    
+    for (let i = 0; i < products.data.length; i++) {
+      const row = document.createElement('div');
+      row.classList.add("product");
+  
+      
+      row.innerHTML = `
+ 
+        <div class="product-info">
+          <div class="top"><h2>${products.data[i].name}</h2><span class="delete" id="delete" onclick='deleteLicense(this)'>delete</span></div>
+          <p>Serial Number: <span class="primary">${products.data[i].serialNumber}</span></p>
+              <p>Subscription Price: <span class="success">$${products.data[0].price}</span> per year</p>
+              <p>Availability: Available Now</p>
+              <p>Expiry Date: <span class="dangerous">${products.data[0].date.substring(0,10)}</span></p>
+         
+        </div>
+      </div>
+    
+     `
+      let firstChild=productsList.firstChild;
+      productsList.insertBefore(row,firstChild);
+    }
+    
+    productsList.appendChild(  `<div class="product add"><span>+</span></div>`);
+
+  } catch (error) {
+    console.error('Error fetching customer data:', error);
+  }
+}
+
+
+productForm.addEventListener("submit", async function (event) {
+  const name=document.querySelector('#licenseForm input[name="name"]').value;
+  const serialNumber=document.querySelector('#licenseForm input[name="serialNumber"]').value;
+  const price=document.querySelector('#licenseForm input[name="price"]').value;
+ 
+  const date=document.querySelector('#licenseForm input[name="date"]').value;
+  const id=JSON.parse(localStorage.getItem('user')).id;
+  console.log(name);
+  console.log(price);
+  console.log(date);
+  event.preventDefault();
+  try{
+    const response=await fetch('/addLicense',{
+        method:"POST",
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body:JSON.stringify({id:id,name:name,serialNumber:serialNumber,price:price,date:date})
+        }
+        );
+        if(response.ok){
+          let data=await response.json();
+
+          document.getElementById("plusc").style.display='block';
+          productForm.style.display='none';
+          
+          
+          refreshProducts();
+        }
+}catch(err){
+  console.err(err);
+}
+});
+
+async function deleteLicense(spanElement) {
+  spanElement.style.color = 'green';
+
+  // Get the product info container
+  const productInfo = spanElement.closest('.product-info');
+
+  // Get the product name from the h2 inside the product info container
+  const name = productInfo.querySelector('h2').textContent.trim();
+
+  console.log(name);
+
+
+      const response = fetch(`/deleteLicense?name=${name}`);
+      
+     
+          // Refresh your products here, assuming refreshProducts() is defined
+          response.then(refreshProducts());
+   
+}
+</script>
     <script src="../javaScript/Client_dashboard-templates.js"></script>
     <script src="../javaScript/main.js"></script>
 

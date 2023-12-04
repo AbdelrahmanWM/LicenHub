@@ -157,6 +157,7 @@ app.post('/providerAccountInformation',(req,res)=>{
         
             db.query(updateQuery,(error,response)=>{
                 if(error)console.log(error);
+                if(response)res.status(200);
 
             })
         }
@@ -184,7 +185,7 @@ app.post('/addCustomer', (req, res) => {
     const status = 'Active';
     const subscription = 'Active';
     const info = 'No info';
-    const query=`SELECT * FROM customers WHERE email = '${email}' And name = '${name}'`;
+    const query=`SELECT * FROM customers WHERE id = '${id}' And email = '${email}' And name = '${name}'`;
         db.query(query,(error,result)=>{
             if(result.length>0){
     
@@ -220,6 +221,54 @@ app.post('/addCustomer', (req, res) => {
   });
 
 });
+app.post('/addProduct', (req, res) => {
+
+  const id = req.session.user || req.body.id;
+  console.log(id);
+  const name = req.body.name;
+  const price=req.body.price;
+  const brand=req.body.brand;
+  const info = req.body.info;
+  db.query(
+    'INSERT INTO products (id, name, price, brand, info) VALUES (?, ?, ?, ?, ?)',
+                  [id, name, price,brand,info],
+                  (error, result) => {
+                    if (error) {
+                      console.error('Error adding product:', error);
+                      res.status(500).json({ error: 'Internal Server Error' });
+                      res.json({message:"X"});
+                    } else {
+                      console.log('New product added:', result);
+                      res.json({ message: 'Product added successfully' });
+                    }
+                  }
+                );
+});
+
+app.post('/addLicense', (req, res) => {
+
+  const id = req.session.user || req.body.id;
+  console.log(id);
+  const name = req.body.name;
+  const serialNumber=req.body.serialNumber;
+  const price=req.body.price;
+ 
+  const date = req.body.date;
+  db.query(
+    'INSERT INTO licenses (id, name, serialNumber, price, date) VALUES (?, ?, ?, ?, ?)',
+                  [id, name, serialNumber,price,date],
+                  (error, result) => {
+                    if (error) {
+                      console.error('Error adding License:', error);
+                      res.status(500).json({ error: 'Internal Server Error' });
+                      res.json({message:"X"});
+                    } else {
+                      console.log('New License added:', result);
+                      res.json({ message: 'License added successfully' });
+                    }
+                  }
+                );
+});
 
 app.get('/customers', async (req, res) => {
     try {
@@ -244,10 +293,87 @@ app.get('/customers', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+  app.get('/products', async (req, res) => {
+    try {
+      const customerId = req.session.user || req.query.id;
+      console.log(customerId);
+      const selectQuery = 'SELECT * FROM products WHERE id = ?';
   
+      db.query(selectQuery, [customerId], (error, results) => {
+        if (error) {
+          console.error(error);
+          res.status(500).json({ error: 'Internal Server Error' });
+        } else {
+          if (results.length > 0) {
+            res.json({ data: results });
+          } else {
+            res.status(404).json({ error: 'Product not found' });
+          }
+        }
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  app.get('/licenses', async (req, res) => {
+    try {
+      const customerId = req.session.user || req.query.id;
+      console.log("From Licenses");
+      const selectQuery = 'SELECT * FROM licenses WHERE id = ?';
+  
+      db.query(selectQuery, [customerId], (error, results) => {
+        if (error) {
+          console.error(error);
+          res.status(500).json({ error: 'Internal Server Error' });
+        } else {
+          if (results.length > 0) {
+            res.json({ data: results });
+          } else {
+            res.status(404).json({ error: 'License not found' });
+          }
+        }
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
   app.get('/deleteCustomer',(req,res)=>{
     let email=req.query.email;
     let deleteQuery=`DELETE FROM customers WHERE email = '${email}'`;
+    db.query(deleteQuery,(error,result)=>{
+        if (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+          } 
+          else{
+            console.log("Successfully deleted.");
+          }
+         
+    })
+  })
+
+  app.get('/deleteProduct',(req,res)=>{
+    console.log("Deleting product.....");
+    let name=req.query.name;
+    let deleteQuery=`DELETE FROM products WHERE name = '${name}'`;
+    db.query(deleteQuery,(error,result)=>{
+        if (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Internal Server Error' });
+          } 
+          else{
+            console.log("Successfully deleted.");
+          }
+         
+    })
+  })
+
+  app.get('/deleteLicense',(req,res)=>{
+    console.log("Deleting License.....");
+    let name=req.query.name;
+    let deleteQuery=`DELETE FROM licenses WHERE name = '${name}'`;
     db.query(deleteQuery,(error,result)=>{
         if (error) {
             console.error(error);
